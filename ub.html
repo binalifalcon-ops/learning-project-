@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Language Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#0F172A,
+#111827,
+#1E293B,
+#334155
+);
+
+min-height:100vh;
+padding:25px;
+overflow-x:hidden;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+font-size:60px;
+font-weight:800;
+
+text-align:center;
+
+color:#38BDF8;
+
+margin-bottom:10px;
+
+text-shadow:
+0 0 15px #38BDF8,
+0 0 35px #0EA5E9;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+color:#CBD5E1;
+
+margin-bottom:30px;
+}
+
+.section{
+
+background:
+rgba(30,41,59,.9);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+
+border:1px solid rgba(56,189,248,.2);
+}
+
+.section h2{
+
+color:#38BDF8;
+
+margin-bottom:15px;
+}
+
+select,
+input,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+
+background:#0F172A;
+
+color:white;
+
+font-size:16px;
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:
+conic-gradient(
+#38BDF8 0deg,
+#1E293B 0deg
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:#0F172A;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:#38BDF8;
+}
+
+.task{
+
+display:flex;
+
+gap:10px;
+
+margin-top:15px;
+
+padding:15px;
+
+background:#0F172A;
+
+border-radius:15px;
+
+color:white;
+}
+
+.task input{
+
+width:22px;
+height:22px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+🚀 Language Academy
+</h1>
+
+<p class="subtitle">
+Master Languages One Day At A Time
+</p>
+
+<div class="section">
+
+<h2>
+📈 Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Language Selection -->
+
+<div class="section">
+
+<h2>🌍 Choose Your Language</h2>
+
+<p style="color:#CBD5E1;">
+Select the language you want to master 🚀
+</p>
+
+<select id="languageSelect">
+
+<option value="english">
+🇺🇸 English
+</option>
+
+<option value="french">
+🇫🇷 French
+</option>
+
+<option value="spanish">
+🇪🇸 Spanish
+</option>
+
+<option value="japanese">
+🇯🇵 Japanese
+</option>
+
+</select>
+
+</div>
+
+<!-- Language Mastery -->
+
+<div class="section">
+
+<h2>🏆 Language Mastery</h2>
+
+<div
+style="
+background:#0F172A;
+padding:20px;
+border-radius:20px;
+">
+
+<h3
+style="
+color:#38BDF8;
+margin-bottom:10px;
+">
+
+🚀 Current Mission
+
+</h3>
+
+<p
+id="masteryLanguage"
+
+style="
+font-size:22px;
+font-weight:700;
+color:white;
+">
+
+Future Polyglot
+
+</p>
+
+<br>
+
+<h3
+style="
+color:#38BDF8;
+margin-bottom:10px;
+">
+
+📚 Words Learned
+
+</h3>
+
+<p
+id="wordsLearned"
+
+style="
+font-size:18px;
+font-weight:600;
+color:#CBD5E1;
+">
+
+0 / 140
+
+</p>
+
+<br>
+
+<h3
+style="
+color:#38BDF8;
+margin-bottom:10px;
+">
+
+📈 Progress
+
+</h3>
+
+<div
+style="
+height:18px;
+background:#1E293B;
+border-radius:50px;
+overflow:hidden;
+">
+
+<div
+id="masteryBar"
+
+style="
+width:0%;
+height:100%;
+background:
+linear-gradient(
+90deg,
+#38BDF8,
+#0EA5E9
+);
+">
+
+</div>
+
+</div>
+
+<br>
+
+<p
+id="masteryPercent"
+
+style="
+text-align:center;
+font-size:18px;
+font-weight:700;
+color:#38BDF8;
+">
+
+0%
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Current Level -->
+
+<div class="section">
+
+<h2>📊 Current Level</h2>
+
+<select id="levelSelect">
+
+<option>A1 Beginner</option>
+
+<option>A2 Elementary</option>
+
+<option>B1 Intermediate</option>
+
+<option>B2 Upper Intermediate</option>
+
+<option>C1 Advanced</option>
+
+<option>C2 Fluent</option>
+
+</select>
+
+</div>
+
+<!-- Study Plan -->
+
+<div class="section">
+
+<h2>📅 Study Plan</h2>
+
+<label style="color:#38BDF8;">
+Daily Study Time
+</label>
+
+<select id="studyTime">
+
+<option>15 Minutes</option>
+
+<option>30 Minutes</option>
+
+<option>45 Minutes</option>
+
+<option>60 Minutes</option>
+
+<option>90 Minutes</option>
+
+</select>
+
+<br><br>
+
+<label style="color:#38BDF8;">
+Target Completion Date
+</label>
+
+<input
+type="date"
+id="targetDate">
+
+</div>
+
+<!-- Language Journey -->
+
+<div class="section">
+
+<h2>⚡ Language Journey</h2>
+
+<h1
+id="currentDay"
+
+style="
+font-size:55px;
+text-align:center;
+color:#38BDF8;
+">
+
+Day 1 / 14
+
+</h1>
+
+<p
+style="
+text-align:center;
+font-size:18px;
+color:#CBD5E1;
+font-weight:600;
+">
+
+140 Words Challenge 🚀
+
+</p>
+
+</div>
+
+<!-- Daily Goals -->
+
+<div class="section">
+
+<h2>🎯 Today's Goals</h2>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Learn 10 New Words 🧠
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Rewrite The Words ✍️
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Build 2 Sentences 💬
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Finish Reading 📖
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Write Summary 📝
+</label>
+
+</div>
+
+</div>
+<!-- Daily Vocabulary -->
+
+<div class="section">
+
+<h2>🧠 Daily Vocabulary</h2>
+
+<p style="color:#CBD5E1;">
+Master today's 10 words
+</p>
+
+<div id="dailyWords">
+
+<div class="task"><label>Word 1</label></div>
+<div class="task"><label>Word 2</label></div>
+<div class="task"><label>Word 3</label></div>
+<div class="task"><label>Word 4</label></div>
+<div class="task"><label>Word 5</label></div>
+
+<div class="task"><label>Word 6</label></div>
+<div class="task"><label>Word 7</label></div>
+<div class="task"><label>Word 8</label></div>
+<div class="task"><label>Word 9</label></div>
+<div class="task"><label>Word 10</label></div>
+
+</div>
+
+</div>
+
+<!-- Rewrite Words -->
+
+<div class="section">
+
+<h2>✍️ Rewrite The Words</h2>
+
+<p style="color:#CBD5E1;">
+Write today's words from memory
+</p>
+
+<input type="text" placeholder="Word 1">
+
+<input type="text" placeholder="Word 2">
+
+<input type="text" placeholder="Word 3">
+
+<input type="text" placeholder="Word 4">
+
+<input type="text" placeholder="Word 5">
+
+<input type="text" placeholder="Word 6">
+
+<input type="text" placeholder="Word 7">
+
+<input type="text" placeholder="Word 8">
+
+<input type="text" placeholder="Word 9">
+
+<input type="text" placeholder="Word 10">
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Words Rewritten Successfully ✍️
+</label>
+
+</div>
+
+</div>
+
+<!-- Sentence Builder -->
+
+<div class="section">
+
+<h2>💬 Build Two Sentences</h2>
+
+<p style="color:#CBD5E1;">
+Create two sentences using today's words
+</p>
+
+<textarea
+placeholder="Sentence 1">
+</textarea>
+
+<textarea
+placeholder="Sentence 2">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Two Sentences Completed 💬
+</label>
+
+</div>
+
+</div>
+
+<!-- Vocabulary Notes -->
+
+<div class="section">
+
+<h2>📚 Vocabulary Notes</h2>
+
+<p style="color:#CBD5E1;">
+Write meanings, examples or useful notes
+</p>
+
+<textarea
+placeholder="Vocabulary notes...">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Vocabulary Reviewed 📚
+</label>
+
+</div>
+
+</div>
+<!-- Reading Mission -->
+
+<div class="section">
+
+<h2>📖 Reading Mission</h2>
+
+<p style="color:#CBD5E1;">
+Read today's passage and focus on understanding the meaning
+</p>
+
+<div
+id="readingText"
+
+style="
+background:#0F172A;
+padding:20px;
+border-radius:20px;
+line-height:2;
+font-size:18px;
+color:white;
+margin-top:15px;
+border:1px solid rgba(56,189,248,.2);
+">
+
+Today's reading will appear here...
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reading Completed 📖
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Summary -->
+
+<div class="section">
+
+<h2>📝 Reading Summary</h2>
+
+<p style="color:#CBD5E1;">
+Write a short summary of what you understood
+</p>
+
+<textarea
+placeholder="Write your summary here...">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Summary Completed 📝
+</label>
+
+</div>
+
+</div>
+
+<!-- Favorite Sentence -->
+
+<div class="section">
+
+<h2>⭐ Favorite Sentence</h2>
+
+<p style="color:#CBD5E1;">
+Write the sentence you liked most
+</p>
+
+<textarea
+placeholder="My favorite sentence...">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Favorite Sentence Saved ⭐
+</label>
+
+</div>
+
+</div>
+
+<!-- New Words -->
+
+<div class="section">
+
+<h2>🚀 New Words From Reading</h2>
+
+<p style="color:#CBD5E1;">
+Write new words discovered during reading
+</p>
+
+<input type="text" placeholder="New Word 1">
+
+<input type="text" placeholder="New Word 2">
+
+<input type="text" placeholder="New Word 3">
+
+<input type="text" placeholder="New Word 4">
+
+<input type="text" placeholder="New Word 5">
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+New Words Added 📚
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Library -->
+
+<div class="section">
+
+<h2>📚 Reading Library</h2>
+
+<p style="color:#CBD5E1;">
+Books I want to read later
+</p>
+
+<textarea
+placeholder="Atomic Habits
+Deep Work
+The Alchemist
+Rich Dad Poor Dad">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Library Updated 📚
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Journal -->
+
+<div class="section">
+
+<h2>🔥 Reading Journal</h2>
+
+<p style="color:#CBD5E1;">
+Write about your learning journey today
+</p>
+
+<textarea
+placeholder="Today I learned...">
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Journal Completed 🔥
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Streak -->
+
+<div class="section">
+
+<h2>🏆 Reading Streak</h2>
+
+<h1
+id="readingStreak"
+
+style="
+font-size:60px;
+text-align:center;
+color:#38BDF8;
+">
+
+0 Days
+
+</h1>
+
+<p
+style="
+text-align:center;
+color:#CBD5E1;
+font-weight:600;
+">
+
+Keep Reading Every Day 🚀📚
+
+</p>
+
+</div>
+<script>
+
+/* ==================================
+   Language Data
+================================== */
+
+const languageData = {
+
+english:{
+1:{
+words:[
+"hello","book","water","friend","family",
+"house","school","happy","food","city"
+],
+reading:
+"Hello. My name is Alex. I enjoy reading books and learning new languages every day."
+}
+},
+
+french:{
+1:{
+words:[
+"bonjour","livre","eau","ami","famille",
+"maison","école","heureux","ville","nourriture"
+],
+reading:
+"Bonjour. Je m'appelle Alex. J'aime apprendre de nouvelles langues."
+}
+},
+
+spanish:{
+1:{
+words:[
+"hola","libro","agua","amigo","familia",
+"casa","escuela","feliz","ciudad","comida"
+],
+reading:
+"Hola. Me llamo Alex. Me gusta aprender idiomas todos los días."
+}
+},
+
+japanese:{
+1:{
+words:[
+"こんにちは",
+"本",
+"水",
+"友達",
+"家族",
+"家",
+"学校",
+"幸せ",
+"食べ物",
+"町"
+],
+reading:
+"こんにちは。わたしはアレックスです。ほんをよむことがすきです。"
+}
+}
+
+};
+
+/* ==================================
+   Elements
+================================== */
+
+const languageSelect =
+document.getElementById(
+"languageSelect"
+);
+
+const dailyWords =
+document.getElementById(
+"dailyWords"
+);
+
+const readingText =
+document.getElementById(
+"readingText"
+);
+
+/* ==================================
+   Current Day
+================================== */
+
+let currentDay =
+parseInt(
+localStorage.getItem(
+"boysLanguageDay"
+)
+) || 1;
+
+/* ==================================
+   Load Lesson
+================================== */
+
+function loadLesson(){
+
+const language =
+languageSelect.value;
+
+const lesson =
+languageData[language]?.[currentDay];
+
+if(!lesson) return;
+
+dailyWords.innerHTML = "";
+
+lesson.words.forEach(word=>{
+
+dailyWords.innerHTML += `
+<div class="task">
+<label>${word}</label>
+</div>
+`;
+
+});
+
+readingText.innerText =
+lesson.reading;
+
+document.getElementById(
+"currentDay"
+).innerText =
+`Day ${currentDay} / 14`;
+
+updateMastery();
+
+}
+
+/* ==================================
+   Save Language
+================================== */
+
+const savedLanguage =
+localStorage.getItem(
+"boysCurrentLanguage"
+);
+
+if(savedLanguage){
+
+languageSelect.value =
+savedLanguage;
+
+}
+
+languageSelect.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boysCurrentLanguage",
+languageSelect.value
+);
+
+loadLesson();
+
+}
+);
+
+/* ==================================
+   Progress Circle
+================================== */
+
+const tasks =
+document.querySelectorAll(
+".taskCheck"
+);
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"boysTask"+index
+);
+
+if(saved==="true"){
+
+task.checked=true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boysTask"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+function updateProgress(){
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/tasks.length)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent+"%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#38BDF8 ${percent*3.6}deg,
+#1E293B ${percent*3.6}deg
+)`;
+
+}
+
+/* ==================================
+   Language Mastery
+================================== */
+
+function updateMastery(){
+
+const languageNames = {
+
+english:"🇺🇸 English",
+french:"🇫🇷 French",
+spanish:"🇪🇸 Spanish",
+japanese:"🇯🇵 Japanese"
+
+};
+
+document.getElementById(
+"masteryLanguage"
+).innerText =
+languageNames[
+languageSelect.value
+];
+
+const wordsLearned =
+currentDay * 10;
+
+document.getElementById(
+"wordsLearned"
+).innerText =
+wordsLearned + " / 140";
+
+const percent =
+Math.min(
+100,
+Math.round(
+(wordsLearned/140)*100
+)
+);
+
+document.getElementById(
+"masteryPercent"
+).innerText =
+percent+"%";
+
+document.getElementById(
+"masteryBar"
+).style.width =
+percent+"%";
+
+}
+
+/* ==================================
+   Reading Streak
+================================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"boysReadingLastVisit"
+);
+
+if(lastVisit!==today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"boysReadingStreak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"boysReadingStreak",
+streak
+);
+
+localStorage.setItem(
+"boysReadingLastVisit",
+today
+);
+
+}
+
+document.getElementById(
+"readingStreak"
+).innerText =
+(localStorage.getItem(
+"boysReadingStreak"
+)||0)
++" Days";
+
+}
+
+/* ==================================
+   Auto Save Inputs
+================================== */
+
+const fields =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+fields.forEach((field,index)=>{
+
+if(
+!field.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"boysLanguageInput"+index;
+
+const saved =
+localStorage.getItem(
+key
+);
+
+if(saved){
+
+field.value=saved;
+
+}
+
+field.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+field.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==================================
+   Start
+================================== */
+
+loadLesson();
+updateProgress();
+updateStreak();
+
+</script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Mission Feedback</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0F172A,
+#111827,
+#1E293B
+);
+
+min-height:100vh;
+
+padding:25px;
+
+color:white;
+
+}
+
+.container{
+
+max-width:1000px;
+
+margin:auto;
+
+}
+
+.title{
+
+font-size:55px;
+
+font-weight:800;
+
+text-align:center;
+
+background:
+linear-gradient(
+90deg,
+#38BDF8,
+#60A5FA
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#CBD5E1;
+
+margin-top:10px;
+margin-bottom:30px;
+
+font-size:20px;
+
+}
+
+.card{
+
+background:
+rgba(15,23,42,.9);
+
+padding:25px;
+
+border-radius:30px;
+
+margin-bottom:20px;
+
+border:
+1px solid rgba(56,189,248,.15);
+
+}
+
+.card h2{
+
+color:#38BDF8;
+
+margin-bottom:15px;
+
+}
+
+input,
+textarea,
+select{
+
+width:100%;
+
+padding:14px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:18px;
+
+background:#111827;
+
+color:white;
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:18px;
+
+font-weight:700;
+
+background:
+linear-gradient(
+90deg,
+#38BDF8,
+#2563EB
+);
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.wall{
+
+display:grid;
+
+gap:15px;
+
+}
+
+.message{
+
+background:#111827;
+
+padding:18px;
+
+border-radius:20px;
+
+border-left:
+6px solid #38BDF8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+🚀 Mission Feedback
+</h1>
+
+<p class="subtitle">
+Send your report before leaving the mission
+</p>
+ <div class="card">
+
+<h2>
+📡 Visitor Report
+</h2>
+
+<input
+id="name"
+placeholder="Your Name">
+
+<select id="favoriteSection">
+
+<option>📖 Reading</option>
+
+<option>🎓 Learning</option>
+
+<option>🕌 Religion</option>
+
+<option>💪 Health</option>
+
+<option>🎯 Goals</option>
+
+</select>
+
+<select id="rating">
+
+<option>⭐⭐⭐⭐⭐ Excellent</option>
+
+<option>⭐⭐⭐⭐ Great</option>
+
+<option>⭐⭐⭐ Good</option>
+
+<option>⭐⭐ Fair</option>
+
+<option>⭐ Poor</option>
+
+</select>
+
+<h3
+style="
+margin-top:15px;
+color:#38BDF8;
+">
+
+🚀 First Impression
+
+</h3>
+
+<textarea
+
+id="impression"
+
+rows="4"
+
+placeholder="
+What was your first impression of the project?
+">
+
+</textarea>
+
+<h3
+style="
+margin-top:15px;
+color:#38BDF8;
+">
+
+📡 Your Report
+
+</h3>
+
+<textarea
+
+id="message"
+
+rows="5"
+
+placeholder="
+Write your report...
+">
+
+</textarea>
+
+<h3
+style="
+margin-top:15px;
+color:#38BDF8;
+">
+
+💡 Improvement Suggestion
+
+</h3>
+
+<textarea
+
+id="suggestion"
+
+rows="4"
+
+placeholder="
+Do you have an idea to improve the project?
+">
+
+</textarea>
+
+<button
+onclick="sendMessage()">
+
+🚀 Send Report
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>
+🌌 Mission Wall
+</h2>
+
+<p
+style="
+color:#CBD5E1;
+margin-bottom:15px;
+">
+
+Reports received from visitors
+
+</p>
+
+<div
+style="
+text-align:center;
+font-size:22px;
+font-weight:700;
+color:#38BDF8;
+margin-bottom:20px;
+">
+
+📡 Total Reports:
+<span id="messageCount">
+
+0
+
+</span>
+
+</div>
+
+<div
+class="wall"
+id="wall">
+
+</div>
+
+</div>
+ <script>
+
+function sendMessage(){
+
+const name =
+document.getElementById(
+"name"
+).value;
+
+const section =
+document.getElementById(
+"favoriteSection"
+).value;
+
+const rating =
+document.getElementById(
+"rating"
+).value;
+
+const impression =
+document.getElementById(
+"impression"
+).value;
+
+const message =
+document.getElementById(
+"message"
+).value;
+
+const suggestion =
+document.getElementById(
+"suggestion"
+).value;
+
+if(
+impression.trim()===""
+&&
+message.trim()===""
+){
+return;
+}
+
+const reports =
+JSON.parse(
+localStorage.getItem(
+"boysFeedback"
+)
+) || [];
+
+reports.unshift({
+
+name,
+section,
+rating,
+impression,
+message,
+suggestion,
+
+date:
+new Date()
+.toLocaleDateString()
+
+});
+
+localStorage.setItem(
+"boysFeedback",
+JSON.stringify(reports)
+);
+
+document.getElementById(
+"name"
+).value="";
+
+document.getElementById(
+"impression"
+).value="";
+
+document.getElementById(
+"message"
+).value="";
+
+document.getElementById(
+"suggestion"
+).value="";
+
+loadReports();
+
+}
+
+function loadReports(){
+
+const wall =
+document.getElementById(
+"wall"
+);
+
+const reports =
+JSON.parse(
+localStorage.getItem(
+"boysFeedback"
+)
+) || [];
+
+document.getElementById(
+"messageCount"
+).innerText =
+reports.length;
+
+wall.innerHTML="";
+
+reports.forEach(item=>{
+
+wall.innerHTML += `
+
+<div class="message">
+
+<h3 style="color:#38BDF8;">
+🚀 ${item.name || "Visitor"}
+</h3>
+
+<p>
+${item.rating}
+</p>
+
+<p>
+${item.section}
+</p>
+
+<br>
+
+<p>
+<strong>
+🚀 First Impression
+</strong>
+</p>
+
+<p>
+${item.impression}
+</p>
+
+<br>
+
+<p>
+<strong>
+📡 Report
+</strong>
+</p>
+
+<p>
+${item.message}
+</p>
+
+${
+item.suggestion
+?
+`
+
+<br>
+
+<p>
+<strong>
+💡 Suggestion
+</strong>
+</p>
+
+<p>
+${item.suggestion}
+</p>
+
+`
+:
+""
+}
+
+<br>
+
+<small
+style="
+color:#CBD5E1;
+">
+
+📅 ${item.date}
+
+</small>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadReports();
+
+</script>
+
+</div>
+
+</body>
+
+</html>

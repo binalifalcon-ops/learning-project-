@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Code Garden</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#FFE4F1,
+#FFD6EC,
+#F5D0FE,
+#E9D5FF
+);
+
+min-height:100vh;
+padding:25px;
+overflow-x:hidden;
+
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+font-size:60px;
+font-weight:800;
+
+text-align:center;
+
+color:#DB2777;
+
+margin-bottom:10px;
+
+text-shadow:
+0 0 15px #F472B6,
+0 0 35px #C084FC;
+
+}
+
+.subtitle{
+
+text-align:center;
+font-size:22px;
+
+color:#7C3AED;
+
+margin-bottom:30px;
+
+}
+
+.section{
+
+background:
+rgba(255,255,255,.85);
+
+padding:25px;
+
+border-radius:25px;
+
+backdrop-filter:blur(15px);
+
+margin-bottom:20px;
+
+}
+
+.section h2{
+
+color:#DB2777;
+
+margin-bottom:15px;
+
+}
+
+select,
+input,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+
+font-size:16px;
+
+background:white;
+
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:
+conic-gradient(
+#EC4899 0deg,
+#FBCFE8 0deg
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:white;
+
+border-radius:50%;
+
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+font-weight:700;
+
+color:#DB2777;
+
+}
+
+.task{
+
+display:flex;
+gap:10px;
+
+margin-top:15px;
+
+padding:15px;
+
+background:#FDF2F8;
+
+border-radius:15px;
+
+}
+
+.task input{
+
+width:22px;
+height:22px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+🌸 Code Garden
+</h1>
+
+<p class="subtitle">
+Build Beautiful Things With Code
+</p>
+
+<div class="section">
+
+<h2>
+📈 Programming Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Programming Roadmap -->
+
+<div class="section">
+
+<h2>💻 Programming Roadmap</h2>
+
+<p style="color:#7C3AED;">
+Choose your programming path 🌸
+</p>
+
+<select id="courseSelect">
+
+<option value="html">
+🌐 HTML
+</option>
+
+<option value="css">
+🎨 CSS
+</option>
+
+<option value="javascript">
+⚡ JavaScript
+</option>
+
+</select>
+
+</div>
+
+<!-- Current Course -->
+
+<div class="section">
+
+<h2>🏆 Current Course</h2>
+
+<div
+style="
+background:white;
+padding:20px;
+border-radius:20px;
+">
+
+<h3
+style="
+color:#DB2777;
+margin-bottom:10px;
+">
+
+🌸 Current Mission
+
+</h3>
+
+<p
+id="currentCourse"
+
+style="
+font-size:22px;
+font-weight:700;
+color:#7C3AED;
+">
+
+🌐 HTML
+
+</p>
+
+<br>
+
+<h3
+style="
+color:#DB2777;
+margin-bottom:10px;
+">
+
+📚 Lessons Completed
+
+</h3>
+
+<p
+id="lessonsCompleted"
+
+style="
+font-size:18px;
+font-weight:600;
+color:#7C3AED;
+">
+
+0 / 14
+
+</p>
+
+<br>
+
+<h3
+style="
+color:#DB2777;
+margin-bottom:10px;
+">
+
+📈 Progress
+
+</h3>
+
+<div
+style="
+height:18px;
+background:#FCE7F3;
+border-radius:50px;
+overflow:hidden;
+">
+
+<div
+id="courseBar"
+
+style="
+width:0%;
+height:100%;
+background:
+linear-gradient(
+90deg,
+#EC4899,
+#C084FC
+);
+">
+
+</div>
+
+</div>
+
+<br>
+
+<p
+id="coursePercent"
+
+style="
+text-align:center;
+font-size:18px;
+font-weight:700;
+color:#DB2777;
+">
+
+0%
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Current Level -->
+
+<div class="section">
+
+<h2>📊 Current Level</h2>
+
+<select id="levelSelect">
+
+<option>
+Beginner
+</option>
+
+<option>
+Intermediate
+</option>
+
+<option>
+Advanced
+</option>
+
+</select>
+
+</div>
+
+<!-- Day Progress -->
+
+<div class="section">
+
+<h2>📅 Day Progress</h2>
+
+<h1
+id="currentDay"
+
+style="
+font-size:55px;
+text-align:center;
+color:#DB2777;
+">
+
+Day 1 / 14
+
+</h1>
+
+<p
+style="
+text-align:center;
+font-size:18px;
+color:#7C3AED;
+font-weight:600;
+">
+
+Code Challenge Journey 🌸
+
+</p>
+
+</div>
+
+<!-- Daily Goals -->
+
+<div class="section">
+
+<h2>🎯 Today's Goals</h2>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Read Today's Lesson 📖
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Rewrite The Code ✍️
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Explain The Code 💬
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Finish Mini Project 🛠
+</label>
+
+</div>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Write Notes 📓
+</label>
+
+</div>
+
+</div>
+<!-- Lesson Area -->
+
+<div class="section">
+
+<h2>📖 Today's Lesson</h2>
+
+<p style="color:#7C3AED;">
+Read today's lesson carefully
+</p>
+
+<div
+
+id="lessonBox"
+
+style="
+background:white;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+line-height:2;
+color:#7C3AED;
+font-size:17px;
+">
+
+<h3 style="color:#DB2777;">
+🌐 HTML Lesson
+</h3>
+
+<br>
+
+HTML is used to create web pages.
+
+Example:
+
+<br><br>
+
+&lt;h1&gt;Hello World&lt;/h1&gt;
+
+<br>
+
+&lt;p&gt;My First Website&lt;/p&gt;
+
+</div>
+
+</div>
+
+<!-- Rewrite Code -->
+
+<div class="section">
+
+<h2>✍️ Rewrite The Code</h2>
+
+<p style="color:#7C3AED;">
+Rewrite today's code from memory
+</p>
+
+<textarea
+
+id="rewriteCode"
+
+rows="10"
+
+placeholder="Write the code here...">
+
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Code Rewritten Successfully ✍️
+</label>
+
+</div>
+
+</div>
+
+<!-- Explain Code -->
+
+<div class="section">
+
+<h2>💬 Explain The Code</h2>
+
+<p style="color:#7C3AED;">
+What does this code do?
+</p>
+
+<textarea
+
+id="codeExplanation"
+
+rows="6"
+
+placeholder="Explain the code...">
+
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Code Explained 💬
+</label>
+
+</div>
+
+</div>
+
+<!-- Programming Notes -->
+
+<div class="section">
+
+<h2>📓 Programming Notes</h2>
+
+<p style="color:#7C3AED;">
+Write what you learned today
+</p>
+
+<textarea
+
+id="programmingNotes"
+
+rows="8"
+
+placeholder="Today I learned...">
+
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Notes Completed 📓
+</label>
+
+</div>
+
+</div>
+<!-- Mini Project -->
+
+<div class="section">
+
+<h2>🛠 Mini Project</h2>
+
+<p style="color:#7C3AED;">
+Build a small project using today's lesson
+</p>
+
+<div
+
+id="projectBox"
+
+style="
+background:white;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+line-height:2;
+color:#7C3AED;
+font-size:17px;
+">
+
+<h3 style="color:#DB2777;">
+🌸 Project Of The Day
+</h3>
+
+<br>
+
+Create a simple profile card containing:
+
+<br><br>
+
+✅ Name
+
+<br>
+
+✅ Age
+
+<br>
+
+✅ Favorite Hobby
+
+<br>
+
+✅ A Short Description
+
+</div>
+
+<textarea
+
+id="projectNotes"
+
+rows="8"
+
+placeholder="Describe how you built your project...">
+
+</textarea>
+
+<div class="task">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Mini Project Completed 🛠
+</label>
+
+</div>
+
+</div>
+
+<!-- Coding Streak -->
+
+<div class="section">
+
+<h2>🔥 Coding Streak</h2>
+
+<h1
+
+id="codingStreak"
+
+style="
+font-size:60px;
+text-align:center;
+color:#DB2777;
+">
+
+0 Days
+
+</h1>
+
+<p
+
+style="
+text-align:center;
+font-weight:600;
+color:#7C3AED;
+">
+
+Keep Coding Every Day 🌸💻
+
+</p>
+
+</div>
+
+<!-- Achievements -->
+
+<div class="section">
+
+<h2>🏆 Achievements</h2>
+
+<div class="task">
+
+🏅 First HTML Page
+
+</div>
+
+<div class="task">
+
+🥈 First Styled Page
+
+</div>
+
+<div class="task">
+
+🥇 First JavaScript Project
+
+</div>
+
+<div class="task">
+
+👑 Junior Developer
+
+</div>
+
+</div>
+<script>
+
+/* ==========================
+   Programming Data
+========================== */
+
+const programmingData = {
+
+html:{
+1:{
+lesson:`
+<h3 style="color:#DB2777;">🌐 HTML Day 1</h3>
+<br>
+HTML is used to create web pages.
+<br><br>
+&lt;h1&gt;Hello World&lt;/h1&gt;
+<br>
+&lt;p&gt;My First Website&lt;/p&gt;
+`,
+project:`
+Create a profile card containing:
+<br><br>
+✅ Name
+<br>
+✅ Age
+<br>
+✅ Favorite Hobby
+`
+}
+},
+
+css:{
+1:{
+lesson:`
+<h3 style="color:#DB2777;">🎨 CSS Day 1</h3>
+<br>
+CSS is used to style web pages.
+<br><br>
+h1{
+color:pink;
+}
+`,
+project:`
+Create a colorful card using CSS.
+`
+}
+},
+
+javascript:{
+1:{
+lesson:`
+<h3 style="color:#DB2777;">⚡ JavaScript Day 1</h3>
+<br>
+JavaScript adds interaction.
+<br><br>
+alert("Hello");
+`,
+project:`
+Create a button that shows a message.
+`
+}
+}
+
+};
+
+/* ==========================
+   Elements
+========================== */
+
+const courseSelect =
+document.getElementById(
+"courseSelect"
+);
+
+const lessonBox =
+document.getElementById(
+"lessonBox"
+);
+
+const projectBox =
+document.getElementById(
+"projectBox"
+);
+
+/* ==========================
+   Current Day
+========================== */
+
+let currentDay =
+parseInt(
+localStorage.getItem(
+"girlsProgrammingDay"
+)
+) || 1;
+
+/* ==========================
+   Load Lesson
+========================== */
+
+function loadLesson(){
+
+const course =
+courseSelect.value;
+
+const lesson =
+programmingData[course]?.[currentDay];
+
+if(!lesson) return;
+
+lessonBox.innerHTML =
+lesson.lesson;
+
+projectBox.innerHTML =
+lesson.project;
+
+document.getElementById(
+"currentCourse"
+).innerText =
+course.toUpperCase();
+
+document.getElementById(
+"currentDay"
+).innerText =
+`Day ${currentDay} / 14`;
+
+updateCourseProgress();
+
+}
+
+/* ==========================
+   Save Course
+========================== */
+
+const savedCourse =
+localStorage.getItem(
+"girlsProgrammingCourse"
+);
+
+if(savedCourse){
+
+courseSelect.value =
+savedCourse;
+
+}
+
+courseSelect.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"girlsProgrammingCourse",
+courseSelect.value
+);
+
+loadLesson();
+
+}
+);
+
+/* ==========================
+   Progress Circle
+========================== */
+
+const tasks =
+document.querySelectorAll(
+".taskCheck"
+);
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"girlsProgrammingTask"+index
+);
+
+if(saved==="true"){
+
+task.checked=true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"girlsProgrammingTask"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+function updateProgress(){
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/tasks.length)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent+"%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#EC4899 ${percent*3.6}deg,
+#FBCFE8 ${percent*3.6}deg
+)`;
+
+}
+
+/* ==========================
+   Course Progress
+========================== */
+
+function updateCourseProgress(){
+
+const completed =
+currentDay;
+
+document.getElementById(
+"lessonsCompleted"
+).innerText =
+completed+" / 14";
+
+const percent =
+Math.round(
+(completed/14)*100
+);
+
+document.getElementById(
+"coursePercent"
+).innerText =
+percent+"%";
+
+document.getElementById(
+"courseBar"
+).style.width =
+percent+"%";
+
+}
+
+/* ==========================
+   Coding Streak
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"girlsCodingLastVisit"
+);
+
+if(lastVisit!==today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"girlsCodingStreak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"girlsCodingStreak",
+streak
+);
+
+localStorage.setItem(
+"girlsCodingLastVisit",
+today
+);
+
+}
+
+document.getElementById(
+"codingStreak"
+).innerText =
+(localStorage.getItem(
+"girlsCodingStreak"
+)||0)
++" Days";
+
+}
+
+/* ==========================
+   Auto Save
+========================== */
+
+const fields =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+fields.forEach((field,index)=>{
+
+if(
+!field.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"girlsProgrammingInput"+index;
+
+const saved =
+localStorage.getItem(
+key
+);
+
+if(saved){
+
+field.value =
+saved;
+
+}
+
+field.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+field.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Start
+========================== */
+
+loadLesson();
+updateProgress();
+updateCourseProgress();
+updateStreak();
+
+</script>
+
+</div>
+
+</body>
+</html>

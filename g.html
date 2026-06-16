@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learning Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#0F172A,
+#111827,
+#1E293B,
+#312E81
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow:hidden;
+}
+
+/* Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:500px;
+height:500px;
+
+background:#FBBF24;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.15;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:500px;
+height:500px;
+
+background:#3B82F6;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.15;
+}
+
+/* Floating Icons */
+
+.float{
+
+position:fixed;
+
+font-size:32px;
+
+animation:float 6s infinite ease-in-out;
+
+pointer-events:none;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:12%;right:8%;}
+.f3{top:75%;left:8%;}
+.f4{top:70%;right:8%;}
+.f5{top:40%;left:10%;}
+.f6{top:35%;right:12%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:#FBBF24;
+
+text-shadow:
+0 0 15px #FBBF24,
+0 0 30px #FBBF24,
+0 0 60px #3B82F6;
+
+margin-top:30px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#E5E7EB;
+
+margin-top:10px;
+
+margin-bottom:60px;
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+}
+
+.card{
+
+background:
+rgba(15,23,42,.75);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+padding:35px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.4s;
+
+border:1px solid rgba(255,255,255,.1);
+}
+
+.card:hover{
+
+transform:
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+0 0 25px #FBBF24,
+0 0 60px #3B82F6;
+}
+
+.icon{
+
+font-size:85px;
+
+margin-bottom:20px;
+}
+
+.card h2{
+
+color:#FBBF24;
+
+font-size:32px;
+
+margin-bottom:15px;
+}
+
+.card p{
+
+color:#CBD5E1;
+
+font-size:18px;
+
+line-height:1.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🚀</div>
+<div class="float f2">💻</div>
+<div class="float f3">⚡</div>
+<div class="float f4">🧠</div>
+<div class="float f5">🌍</div>
+<div class="float f6">🏆</div>
+
+<div class="container">
+
+<h1 class="title">
+🚀 Learning Academy
+</h1>
+
+<p class="subtitle">
+Build skills. Build discipline. Build your future.
+</p>
+
+<div class="cards">
+
+<!-- Languages -->
+
+<div
+class="card"
+onclick="location.href='ub.html'">
+
+<div class="icon">
+🌍
+</div>
+
+<h2>
+Languages
+</h2>
+
+<p>
+
+Master new languages through
+daily vocabulary,
+reading missions,
+writing exercises
+and progress tracking.
+
+</p>
+
+</div>
+
+<!-- Programming -->
+
+<div
+class="card"
+onclick="location.href='mb.html'">
+
+<div class="icon">
+💻
+</div>
+
+<h2>
+Programming
+</h2>
+
+<p>
+
+Learn coding through
+projects,
+challenges,
+skill trees,
+XP levels
+and real development practice.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

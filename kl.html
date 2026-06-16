@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Choose Your Journey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(
+135deg,
+#eef8ff,
+#dff5ff,
+#e7e3ff,
+#f6f0ff
+);
+
+overflow:hidden;
+position:relative;
+}
+
+/* خلفية متوهجة */
+
+body::before{
+content:"";
+
+position:absolute;
+
+top:-250px;
+left:-250px;
+
+width:550px;
+height:550px;
+
+background:#7dd3fc;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.35;
+}
+
+body::after{
+content:"";
+
+position:absolute;
+
+bottom:-250px;
+right:-250px;
+
+width:550px;
+height:550px;
+
+background:#a78bfa;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.35;
+}
+
+/* نجوم */
+
+.star{
+
+position:absolute;
+
+font-size:24px;
+
+opacity:.6;
+
+animation:float 6s infinite ease-in-out;
+}
+
+.star1{
+top:10%;
+left:8%;
+}
+
+.star2{
+top:18%;
+right:10%;
+}
+
+.star3{
+bottom:15%;
+left:12%;
+}
+
+.star4{
+bottom:20%;
+right:8%;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.container{
+
+width:90%;
+max-width:1200px;
+
+text-align:center;
+
+position:relative;
+z-index:2;
+}
+
+/* العنوان */
+
+h1{
+
+font-size:85px;
+
+font-weight:800;
+
+letter-spacing:4px;
+
+color:#1e3a8a;
+
+margin-bottom:10px;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.9),
+0 0 20px rgba(99,102,241,.5),
+0 0 40px rgba(99,102,241,.35),
+0 0 60px rgba(99,102,241,.2);
+
+animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+
+text-shadow:
+0 0 10px rgba(255,255,255,.9),
+0 0 20px rgba(99,102,241,.4);
+}
+
+to{
+
+text-shadow:
+0 0 20px rgba(255,255,255,1),
+0 0 40px rgba(99,102,241,.6),
+0 0 70px rgba(99,102,241,.4);
+}
+
+}
+
+.subtitle{
+
+font-size:22px;
+
+font-weight:600;
+
+color:#64748b;
+
+margin-bottom:60px;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.8);
+}
+
+/* البطاقات */
+
+.cards{
+
+display:flex;
+
+justify-content:center;
+
+gap:40px;
+
+flex-wrap:wrap;
+}
+
+.card{
+
+width:340px;
+
+padding:35px;
+
+border-radius:35px;
+
+background:rgba(255,255,255,.65);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.85);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08),
+0 0 20px rgba(99,102,241,.15),
+0 0 50px rgba(99,102,241,.08);
+
+cursor:pointer;
+
+transition:.45s;
+
+position:relative;
+
+overflow:hidden;
+
+text-decoration:none;
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.65),
+transparent
+);
+
+transition:.8s;
+}
+
+.card:hover::before{
+left:120%;
+}
+
+.card:hover{
+
+transform:
+translateY(-12px)
+scale(1.05);
+
+box-shadow:
+0 0 20px rgba(99,102,241,.4),
+0 0 40px rgba(99,102,241,.35),
+0 0 80px rgba(99,102,241,.2),
+0 0 120px rgba(99,102,241,.15);
+}
+
+.card:active{
+
+transform:scale(.96);
+
+box-shadow:
+0 0 20px rgba(6,182,212,.7),
+0 0 60px rgba(6,182,212,.5);
+}
+
+.icon{
+
+width:120px;
+height:120px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:65px;
+
+margin-bottom:25px;
+
+box-shadow:
+0 0 25px rgba(255,255,255,.9);
+}
+
+.boy .icon{
+
+background:
+linear-gradient(
+135deg,
+#60a5fa,
+#06b6d4
+);
+
+color:white;
+}
+
+.girl .icon{
+
+background:
+linear-gradient(
+135deg,
+#c084fc,
+#f472b6
+);
+
+color:white;
+}
+
+.card h2{
+
+font-size:34px;
+
+margin-bottom:15px;
+
+color:#1e293b;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.8),
+0 0 20px rgba(99,102,241,.3);
+}
+
+.card p{
+
+font-size:18px;
+
+line-height:2;
+
+color:#64748b;
+}
+
+.footer{
+
+margin-top:60px;
+
+font-size:22px;
+
+font-weight:700;
+
+color:#475569;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.9),
+0 0 20px rgba(99,102,241,.2);
+}
+
+/* الهاتف */
+
+@media(max-width:768px){
+
+h1{
+font-size:55px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.card{
+width:100%;
+max-width:320px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="star star1">✨</div>
+<div class="star star2">⭐</div>
+<div class="star star3">💫</div>
+<div class="star star4">✨</div>
+
+<div class="container">
+
+<h1>Choose Your Journey</h1>
+
+<div class="subtitle">
+Personalize your experience
+</div>
+
+<div class="cards">
+
+<a href="MP.html" class="card boy">
+
+<div class="icon">
+👦
+</div>
+
+<h2>BOY</h2>
+
+<p>
+Build Discipline<br>
+Grow Strong<br>
+Reach Your Goals
+</p>
+
+</a>
+
+<a href="kM.html" class="card girl">
+
+<div class="icon">
+👧
+</div>
+
+<h2>GIRL</h2>
+
+<p>
+Stay Inspired<br>
+Grow With Balance<br>
+Reach Your Goals
+</p>
+
+</a>
+
+</div>
+
+<div class="footer">
+🚀 Choose your path and start growing today
+</div>
+
+</div>
+
+</body>
+</html>

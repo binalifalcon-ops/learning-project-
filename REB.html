@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Dark Autumn Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#0F172A,
+#1E293B,
+#2D1B0E,
+#3B2414
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:500px;
+height:500px;
+
+background:#F59E0B;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.15;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:500px;
+height:500px;
+
+background:#EA580C;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.15;
+}
+
+.float{
+
+position:fixed;
+
+font-size:32px;
+
+pointer-events:none;
+
+animation:float 6s infinite ease-in-out;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:15%;right:8%;}
+.f3{top:70%;left:7%;}
+.f4{top:75%;right:7%;}
+.f5{top:35%;left:12%;}
+.f6{top:30%;right:15%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:#FBBF24;
+
+text-shadow:
+0 0 15px #F59E0B,
+0 0 30px #F59E0B,
+0 0 60px #EA580C;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#E5E7EB;
+
+margin-bottom:35px;
+}
+
+.progress-card{
+
+background:
+rgba(15,23,42,.75);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+background:
+conic-gradient(
+#F59E0B 0deg,
+#374151 0deg
+);
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:#0F172A;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:white;
+}
+
+.section{
+
+background:
+rgba(15,23,42,.75);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+}
+
+.section h2{
+
+color:#FBBF24;
+
+margin-bottom:15px;
+}
+
+input,
+textarea,
+select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:15px;
+
+background:#1E293B;
+
+color:white;
+}
+
+.task-complete{
+
+margin-top:20px;
+
+padding:15px;
+
+background:#1E293B;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.taskCheck{
+
+width:22px;
+height:22px;
+}
+
+.task-complete label{
+
+color:white;
+font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🍂</div>
+<div class="float f2">📚</div>
+<div class="float f3">🍁</div>
+<div class="float f4">☕</div>
+<div class="float f5">⚡</div>
+<div class="float f6">🦉</div>
+
+<div class="container">
+
+<h1 class="title">
+📚 Dark Autumn Library
+</h1>
+
+<p class="subtitle">
+Knowledge grows page by page
+</p>
+
+<div class="progress-card">
+
+<h2>
+Reading Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Reading Queue -->
+
+<div class="section">
+
+<h2>📚 Reading Queue</h2>
+
+<textarea
+placeholder="1. Atomic Habits
+2. Deep Work
+3. Rich Dad Poor Dad
+4. The Psychology of Money">
+</textarea>
+
+</div>
+
+<!-- Current Book -->
+
+<div class="section">
+
+<h2>📖 Current Book</h2>
+
+<input
+type="text"
+placeholder="Book Title">
+
+<input
+type="text"
+placeholder="Author Name">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Current Book Selected 📚
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Plan -->
+
+<div class="section">
+
+<h2>🎯 Reading Plan</h2>
+
+<input
+type="number"
+placeholder="Total Pages">
+
+<input
+type="number"
+placeholder="Days To Finish">
+
+<input
+type="number"
+placeholder="Pages Per Day (Auto Calculated)"
+readonly>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reading Plan Ready ⚡
+</label>
+
+</div>
+
+</div>
+
+<!-- Daily Reading Log -->
+
+<div class="section">
+
+<h2>📅 Daily Reading Log</h2>
+
+<input
+type="number"
+placeholder="Start Page">
+
+<input
+type="number"
+placeholder="End Page">
+
+<textarea
+placeholder="How was today's reading session?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Today's Reading Completed 📖
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Time -->
+
+<div class="section">
+
+<h2>⏳ Reading Time</h2>
+
+<input
+type="number"
+placeholder="Minutes Read Today">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reading Session Finished ☕
+</label>
+
+</div>
+
+</div>
+<!-- What Did I Learn Today -->
+
+<div class="section">
+
+<h2>🧠 What Did I Learn Today?</h2>
+
+<textarea
+placeholder="Write the most important lesson you learned from today's reading...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Lesson Saved 🦉
+</label>
+
+</div>
+
+</div>
+
+<!-- Golden Idea -->
+
+<div class="section">
+
+<h2>💎 Golden Idea</h2>
+
+<textarea
+placeholder="The most powerful idea from today's reading...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Golden Idea Saved ⚡
+</label>
+
+</div>
+
+</div>
+
+<!-- Favorite Quote -->
+
+<div class="section">
+
+<h2>⭐ Favorite Quote</h2>
+
+<textarea
+placeholder="Write your favorite quote from the book...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Quote Saved 📖
+</label>
+
+</div>
+
+</div>
+
+<!-- Reflection -->
+
+<div class="section">
+
+<h2>🌱 Real Life Application</h2>
+
+<textarea
+placeholder="How will you apply this knowledge in your life?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reflection Completed 🍂
+</label>
+
+</div>
+
+</div>
+
+<!-- Book Review -->
+
+<div class="section">
+
+<h2>🎖 Book Review</h2>
+
+<select>
+
+<option>
+⭐ 1 Star
+</option>
+
+<option>
+⭐⭐ 2 Stars
+</option>
+
+<option>
+⭐⭐⭐ 3 Stars
+</option>
+
+<option>
+⭐⭐⭐⭐ 4 Stars
+</option>
+
+<option>
+⭐⭐⭐⭐⭐ 5 Stars
+</option>
+
+</select>
+
+<textarea
+placeholder="Would you recommend this book? Why?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Review Saved 🏆
+</label>
+
+</div>
+
+</div>
+
+<!-- Finished Books -->
+
+<div class="section">
+
+<h2>🏆 Finished Books</h2>
+
+<textarea
+placeholder="List your completed books here...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Book Completed 🎉
+</label>
+
+</div>
+
+</div>
+
+<!-- Personal Library -->
+
+<div class="section">
+
+<h2>📚 Personal Library</h2>
+
+<textarea
+placeholder="Your personal collection of completed books...">
+</textarea>
+
+</div>
+
+<!-- Reading Streak -->
+
+<div class="section">
+
+<h2>🍂 Reading Streak</h2>
+
+<h1 id="streakDays">
+
+0 Days
+
+</h1>
+
+</div>
+
+<!-- Daily Inspiration -->
+
+<div class="section">
+
+<h2>⚡ Reading Inspiration</h2>
+
+<p id="quote">
+
+Knowledge is power.
+
+</p>
+
+</div>
+<script>
+
+/* ==========================
+   Reading Quotes
+========================== */
+
+const quotes = [
+
+"📚 Knowledge is power.",
+
+"⚡ A book is a weapon against ignorance.",
+
+"🍂 Every page is a step forward.",
+
+"🦉 Wise men learn every day.",
+
+"🔥 Reading sharpens the mind.",
+
+"☕ Great ideas begin with a page.",
+
+"🏆 Readers become leaders."
+
+];
+
+const today =
+new Date().getDate();
+
+document.getElementById("quote").innerText =
+quotes[today % quotes.length];
+
+/* ==========================
+   Reading Progress
+========================== */
+
+const tasks =
+document.querySelectorAll(".taskCheck");
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"boys_reading_task_"+index
+);
+
+if(saved==="true"){
+
+task.checked = true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boys_reading_task_"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+/* ==========================
+   Progress Circle
+========================== */
+
+function updateProgress(){
+
+const total =
+tasks.length;
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/total)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent + "%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#F59E0B ${percent*3.6}deg,
+#374151 ${percent*3.6}deg
+)`;
+
+checkCompletion(percent);
+
+}
+
+/* ==========================
+   Mission Complete
+========================== */
+
+function checkCompletion(percent){
+
+if(percent===100){
+
+document.querySelector(
+".title"
+).innerHTML =
+"🏆 READING MISSION COMPLETE 🏆";
+
+}
+
+}
+
+/* ==========================
+   Reading Streak
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"boys_reading_last_visit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"boys_reading_streak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"boys_reading_streak",
+streak
+);
+
+localStorage.setItem(
+"boys_reading_last_visit",
+today
+);
+
+}
+
+document.getElementById(
+"streakDays"
+).innerText =
+(localStorage.getItem(
+"boys_reading_streak"
+)||0)
++ " Days";
+
+}
+
+/* ==========================
+   Save Inputs
+========================== */
+
+const inputs =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+inputs.forEach((input,index)=>{
+
+if(
+!input.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"boys_reading_input_"+index;
+
+const saved =
+localStorage.getItem(key);
+
+if(saved){
+
+input.value = saved;
+
+}
+
+input.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+input.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Pages Per Day Calculator
+========================== */
+
+const totalPagesInput =
+document.querySelectorAll("input")[2];
+
+const daysInput =
+document.querySelectorAll("input")[3];
+
+const pagesPerDayInput =
+document.querySelectorAll("input")[4];
+
+function calculatePages(){
+
+const totalPages =
+parseInt(totalPagesInput.value);
+
+const days =
+parseInt(daysInput.value);
+
+if(
+!isNaN(totalPages)
+&&
+!isNaN(days)
+&&
+days > 0
+){
+
+pagesPerDayInput.value =
+Math.ceil(totalPages / days);
+
+}
+
+}
+
+if(totalPagesInput && daysInput){
+
+totalPagesInput.addEventListener(
+"input",
+calculatePages
+);
+
+daysInput.addEventListener(
+"input",
+calculatePages
+);
+
+}
+
+/* ==========================
+   Reading Statistics
+========================== */
+
+function updateStats(){
+
+const completedBooks =
+localStorage.getItem(
+"completed_books_count"
+) || 0;
+
+console.log(
+"Completed Books:",
+completedBooks
+);
+
+}
+
+/* ==========================
+   Start
+========================== */
+
+updateStreak();
+
+updateProgress();
+
+updateStats();
+
+</script>
+
+</div>
+
+</body>
+</html>

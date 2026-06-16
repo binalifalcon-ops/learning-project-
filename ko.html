@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ONE STEP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+background:
+linear-gradient(
+135deg,
+#eef8ff,
+#dff5ff,
+#e7e3ff,
+#f6f0ff
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:40px;
+
+overflow-x:hidden;
+position:relative;
+}
+
+/* خلفية متوهجة */
+
+body::before{
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:500px;
+height:500px;
+
+background:#7dd3fc;
+
+border-radius:50%;
+
+filter:blur(140px);
+
+opacity:.35;
+}
+
+body::after{
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:500px;
+height:500px;
+
+background:#a78bfa;
+
+border-radius:50%;
+
+filter:blur(140px);
+
+opacity:.35;
+}
+
+.container{
+width:100%;
+max-width:1300px;
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+/* بطاقات الحواف */
+
+.corner{
+
+position:absolute;
+
+padding:18px 25px;
+
+background:rgba(255,255,255,.65);
+
+backdrop-filter:blur(20px);
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.8);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+font-weight:700;
+
+color:#334155;
+
+text-shadow:
+0 0 8px rgba(255,255,255,.8);
+}
+
+.top-left{
+top:-10px;
+left:0;
+}
+
+.top-right{
+top:-10px;
+right:0;
+}
+
+.bottom-left{
+bottom:-20px;
+left:0;
+}
+
+.bottom-right{
+bottom:-20px;
+right:0;
+}
+
+/* العنوان */
+
+h1{
+
+font-size:100px;
+
+font-weight:800;
+
+letter-spacing:10px;
+
+margin-bottom:10px;
+
+color:#1e3a8a;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.9),
+0 0 20px rgba(99,102,241,.5),
+0 0 40px rgba(99,102,241,.3),
+0 0 60px rgba(99,102,241,.2);
+}
+
+.subtitle{
+
+font-size:24px;
+
+font-weight:600;
+
+color:#64748b;
+
+margin-bottom:50px;
+}
+
+/* البطاقات */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-bottom:50px;
+}
+
+.card{
+
+background:rgba(255,255,255,.65);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.8);
+
+border-radius:28px;
+
+padding:25px;
+
+position:relative;
+
+overflow:hidden;
+
+cursor:pointer;
+
+transition:.4s;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08),
+0 0 20px rgba(99,102,241,.08);
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.55),
+transparent
+);
+
+transition:.8s;
+}
+
+.card:hover::before{
+left:120%;
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+0 0 15px rgba(99,102,241,.25),
+0 0 30px rgba(99,102,241,.20),
+0 0 60px rgba(99,102,241,.15);
+}
+
+.card:active{
+
+transform:scale(.97);
+
+box-shadow:
+0 0 20px rgba(6,182,212,.6),
+0 0 40px rgba(6,182,212,.4);
+}
+
+.icon{
+
+font-size:50px;
+
+margin-bottom:15px;
+}
+
+.card h3{
+
+font-size:28px;
+
+margin-bottom:10px;
+
+color:#1e293b;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.8);
+}
+
+.card p{
+
+color:#64748b;
+
+line-height:1.7;
+
+font-size:15px;
+}
+
+/* الأزرار */
+
+.buttons{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:20px;
+}
+
+.btn{
+
+width:420px;
+max-width:90%;
+
+padding:18px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:white;
+
+font-size:22px;
+
+font-weight:700;
+
+transition:.4s;
+}
+
+.instagram{
+
+background:
+linear-gradient(
+135deg,
+#ff6cab,
+#ff8e53
+);
+
+box-shadow:
+0 10px 25px rgba(255,108,171,.35);
+}
+
+.start{
+
+background:
+linear-gradient(
+135deg,
+#4f46e5,
+#06b6d4
+);
+
+box-shadow:
+0 10px 25px rgba(79,70,229,.35);
+}
+
+.btn:hover{
+
+transform:scale(1.05);
+
+box-shadow:
+0 0 20px rgba(255,255,255,.8),
+0 0 40px rgba(99,102,241,.4),
+0 0 60px rgba(99,102,241,.25);
+}
+
+.footer{
+
+margin-top:35px;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#475569;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.9);
+}
+
+/* نجوم متحركة */
+
+.star{
+
+position:fixed;
+
+font-size:22px;
+
+opacity:.5;
+
+animation:float 6s infinite ease-in-out;
+}
+
+.star:nth-child(1){
+top:10%;
+left:8%;
+}
+
+.star:nth-child(2){
+top:20%;
+right:10%;
+}
+
+.star:nth-child(3){
+bottom:15%;
+left:15%;
+}
+
+.star:nth-child(4){
+bottom:25%;
+right:8%;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:60px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.corner{
+display:none;
+}
+
+.btn{
+font-size:18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="star">✨</div>
+<div class="star">⭐</div>
+<div class="star">💫</div>
+<div class="star">✨</div>
+
+<div class="container">
+
+<div class="corner top-left">
+🚀 Progress Over Perfection
+</div>
+
+<div class="corner top-right">
+🎯 One Step Every Day
+</div>
+
+<div class="corner bottom-left">
+⭐ Believe In Yourself
+</div>
+
+<div class="corner bottom-right">
+📈 Building My Future
+</div>
+
+<h1>ONE STEP</h1>
+
+<div class="subtitle">
+Learn • Read • Improve • Grow
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">💪</div>
+<h3>Health</h3>
+<p>
+Healthy habits, exercise and self-care.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">📚</div>
+<h3>Learning</h3>
+<p>
+Programming, technology and skill development.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">📖</div>
+<h3>Reading</h3>
+<p>
+Books, notes and inspiring ideas.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🌙</div>
+<h3>Faith</h3>
+<p>
+Reflection, gratitude and spiritual growth.
+</p>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://instagram.com/falcon_noura"
+target="_blank"
+class="btn instagram">
+
+📸 Follow My Journey
+
+</a>
+
+<a href="kl.html"
+class="btn start">
+
+🚀 Start Exploring
+
+</a>
+
+</div>
+
+<div class="footer">
+
+✨ Keep Moving Forward ✨
+
+</div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

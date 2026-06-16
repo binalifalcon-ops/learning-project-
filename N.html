@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learning Garden</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#FFE4F1,
+#FFD6EC,
+#F5D0FE,
+#E9D5FF
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow:hidden;
+}
+
+/* Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:500px;
+height:500px;
+
+background:#FF69B4;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.25;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:500px;
+height:500px;
+
+background:#C084FC;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.25;
+}
+
+/* Floating Icons */
+
+.float{
+
+position:fixed;
+
+font-size:32px;
+
+animation:float 6s infinite ease-in-out;
+
+pointer-events:none;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:12%;right:8%;}
+.f3{top:75%;left:8%;}
+.f4{top:70%;right:8%;}
+.f5{top:40%;left:10%;}
+.f6{top:35%;right:12%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+}
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:#DB2777;
+
+text-shadow:
+0 0 15px #F472B6,
+0 0 30px #C084FC,
+0 0 60px #F9A8D4;
+
+margin-top:30px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#7C3AED;
+
+margin-top:10px;
+
+margin-bottom:60px;
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+}
+
+.card{
+
+background:
+rgba(255,255,255,.75);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+padding:35px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.4s;
+
+box-shadow:
+0 0 20px rgba(236,72,153,.15);
+}
+
+.card:hover{
+
+transform:
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+0 0 30px #F472B6,
+0 0 60px #C084FC;
+}
+
+.icon{
+
+font-size:85px;
+
+margin-bottom:20px;
+}
+
+.card h2{
+
+color:#DB2777;
+
+font-size:32px;
+
+margin-bottom:15px;
+}
+
+.card p{
+
+color:#6D28D9;
+
+font-size:18px;
+
+line-height:1.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🌸</div>
+<div class="float f2">🦋</div>
+<div class="float f3">📚</div>
+<div class="float f4">🌈</div>
+<div class="float f5">✨</div>
+<div class="float f6">💖</div>
+
+<div class="container">
+
+<h1 class="title">
+🌸 Learning Garden
+</h1>
+
+<p class="subtitle">
+Choose your learning journey
+</p>
+
+<div class="cards">
+
+<!-- Languages -->
+
+<div
+class="card"
+onclick="location.href='u.html'">
+
+<div class="icon">
+🌍
+</div>
+
+<h2>
+Languages
+</h2>
+
+<p>
+
+Learn languages through
+daily vocabulary,
+sentence building,
+reading missions
+and progress tracking.
+
+</p>
+
+</div>
+
+<!-- Programming -->
+
+<div
+class="card"
+onclick="location.href='m.html'">
+
+<div class="icon">
+💻
+</div>
+
+<h2>
+Programming
+</h2>
+
+<p>
+
+Master coding through
+projects,
+daily practice,
+skill trees
+and achievements.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

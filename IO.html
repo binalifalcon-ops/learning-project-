@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Garden Messages</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#FFF1F8,
+#FCE7F3,
+#F3E8FF,
+#FAF5FF
+);
+
+min-height:100vh;
+
+padding:25px;
+
+}
+
+.container{
+
+max-width:1000px;
+
+margin:auto;
+
+}
+
+.title{
+
+font-size:55px;
+
+font-weight:800;
+
+text-align:center;
+
+background:
+linear-gradient(
+90deg,
+#EC4899,
+#C084FC
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#A855F7;
+
+margin-top:10px;
+margin-bottom:30px;
+
+font-size:20px;
+
+}
+
+.card{
+
+background:white;
+
+padding:25px;
+
+border-radius:30px;
+
+margin-bottom:20px;
+
+box-shadow:
+0 10px 25px rgba(236,72,153,.12);
+
+}
+
+.card h2{
+
+color:#DB2777;
+
+margin-bottom:15px;
+
+}
+
+input,
+textarea,
+select{
+
+width:100%;
+
+padding:14px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:18px;
+
+background:#FDF2F8;
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:18px;
+
+font-weight:700;
+
+background:
+linear-gradient(
+90deg,
+#EC4899,
+#C084FC
+);
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.wall{
+
+display:grid;
+
+gap:15px;
+
+}
+
+.message{
+
+background:#FDF2F8;
+
+padding:18px;
+
+border-radius:20px;
+
+border-left:
+6px solid #EC4899;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+🌸 Garden Messages
+</h1>
+
+<p class="subtitle">
+Leave a flower before you go
+</p>
+<div class="card">
+
+<h2>
+🌷 Share Your Experience
+</h2>
+
+<input
+id="name"
+placeholder="Your Name">
+
+<select id="favoriteSection">
+
+<option>📖 Reading</option>
+
+<option>🎓 Learning</option>
+
+<option>🕌 Religion</option>
+
+<option>💪 Health</option>
+
+<option>🎯 Goals</option>
+
+</select>
+
+<select id="rating">
+
+<option>⭐⭐⭐⭐⭐ Amazing</option>
+
+<option>⭐⭐⭐⭐ Great</option>
+
+<option>⭐⭐⭐ Good</option>
+
+<option>⭐⭐ Fair</option>
+
+<option>⭐ Poor</option>
+
+</select>
+
+<h3
+style="
+margin-top:15px;
+color:#DB2777;
+">
+
+🌸 First Impression
+
+</h3>
+
+<textarea
+
+id="impression"
+
+rows="4"
+
+placeholder="
+What was your first impression of the application?
+">
+
+</textarea>
+
+<h3
+style="
+margin-top:15px;
+color:#DB2777;
+">
+
+💌 Your Message
+
+</h3>
+
+<textarea
+
+id="message"
+
+rows="5"
+
+placeholder="
+Write your message here...
+">
+
+</textarea>
+
+<h3
+style="
+margin-top:15px;
+color:#DB2777;
+">
+
+💡 Suggestion
+
+</h3>
+
+<textarea
+
+id="suggestion"
+
+rows="4"
+
+placeholder="
+Do you have an idea to improve the app?
+">
+
+</textarea>
+
+<button
+onclick="sendMessage()">
+
+🌷 Leave A Flower
+
+</button>
+
+</div>
+<div class="card">
+
+<h2>
+🌷 Flower Wall
+</h2>
+
+<p
+style="
+color:#A855F7;
+margin-bottom:15px;
+">
+
+Flowers left by visitors
+
+</p>
+
+<div
+style="
+text-align:center;
+font-size:22px;
+font-weight:700;
+color:#DB2777;
+margin-bottom:20px;
+">
+
+🌸 Total Flowers:
+<span id="messageCount">
+
+0
+
+</span>
+
+</div>
+
+<div
+class="wall"
+id="wall">
+
+</div>
+
+</div>
+<script>
+
+function sendMessage(){
+
+const name =
+document.getElementById(
+"name"
+).value;
+
+const section =
+document.getElementById(
+"favoriteSection"
+).value;
+
+const rating =
+document.getElementById(
+"rating"
+).value;
+
+const impression =
+document.getElementById(
+"impression"
+).value;
+
+const message =
+document.getElementById(
+"message"
+).value;
+
+const suggestion =
+document.getElementById(
+"suggestion"
+).value;
+
+if(
+impression.trim()===""
+&&
+message.trim()===""
+){
+return;
+}
+
+const messages =
+JSON.parse(
+localStorage.getItem(
+"girlsFeedback"
+)
+) || [];
+
+messages.unshift({
+
+name,
+section,
+rating,
+impression,
+message,
+suggestion,
+
+date:
+new Date()
+.toLocaleDateString()
+
+});
+
+localStorage.setItem(
+"girlsFeedback",
+JSON.stringify(messages)
+);
+
+document.getElementById(
+"name"
+).value="";
+
+document.getElementById(
+"impression"
+).value="";
+
+document.getElementById(
+"message"
+).value="";
+
+document.getElementById(
+"suggestion"
+).value="";
+
+loadMessages();
+
+}
+
+function loadMessages(){
+
+const wall =
+document.getElementById(
+"wall"
+);
+
+const messages =
+JSON.parse(
+localStorage.getItem(
+"girlsFeedback"
+)
+) || [];
+
+document.getElementById(
+"messageCount"
+).innerText =
+messages.length;
+
+wall.innerHTML="";
+
+messages.forEach(item=>{
+
+wall.innerHTML += `
+
+<div class="message">
+
+<h3 style="color:#DB2777;">
+🌸 ${item.name || "Visitor"}
+</h3>
+
+<p>
+${item.rating}
+</p>
+
+<p>
+${item.section}
+</p>
+
+<br>
+
+<p>
+<strong>
+🌷 First Impression
+</strong>
+</p>
+
+<p>
+${item.impression}
+</p>
+
+<br>
+
+<p>
+<strong>
+💌 Message
+</strong>
+</p>
+
+<p>
+${item.message}
+</p>
+
+${
+item.suggestion
+?
+`
+
+<br>
+
+<p>
+<strong>
+💡 Suggestion
+</strong>
+</p>
+
+<p>
+${item.suggestion}
+</p>
+
+`
+:
+""
+}
+
+<br>
+
+<small
+style="
+color:#A855F7;
+">
+
+📅 ${item.date}
+
+</small>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadMessages();
+
+</script>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Autumn Reading Garden</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#FFF8E8,
+#FDF0D5,
+#FAEDCD,
+#FFE5B4
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+}
+
+/* Autumn Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:450px;
+height:450px;
+
+background:#FFD6A5;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:450px;
+height:450px;
+
+background:#FEC89A;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+/* Floating Icons */
+
+.float{
+
+position:fixed;
+
+font-size:32px;
+
+pointer-events:none;
+
+animation:float 6s infinite ease-in-out;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:15%;right:8%;}
+.f3{top:70%;left:7%;}
+.f4{top:75%;right:7%;}
+.f5{top:35%;left:12%;}
+.f6{top:30%;right:15%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+}
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:#8B5E3C;
+
+text-shadow:
+0 0 15px rgba(255,255,255,.8);
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#A2673F;
+
+margin-bottom:35px;
+}
+
+/* Progress */
+
+.progress-card{
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+background:
+conic-gradient(
+#D97706 0deg,
+#E5E7EB 0deg
+);
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:white;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:#8B5E3C;
+}
+
+/* Cards */
+
+.section{
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+}
+
+.section h2{
+
+color:#8B5E3C;
+
+margin-bottom:15px;
+}
+
+input,
+textarea,
+select{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+}
+
+.task-complete{
+
+margin-top:20px;
+
+padding:15px;
+
+background:white;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.taskCheck{
+
+width:22px;
+height:22px;
+}
+
+.task-complete label{
+
+font-weight:600;
+
+color:#8B5E3C;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🍂</div>
+<div class="float f2">📖</div>
+<div class="float f3">🍁</div>
+<div class="float f4">☕</div>
+<div class="float f5">🌿</div>
+<div class="float f6">✨</div>
+
+<div class="container">
+
+<h1 class="title">
+📚 Autumn Reading Garden
+</h1>
+
+<p class="subtitle">
+Every page is a new adventure
+</p>
+
+<div class="progress-card">
+
+<h2>
+Reading Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div><!-- Reading Queue -->
+
+<div class="section">
+
+<h2>📚 My Reading Queue</h2>
+
+<textarea
+placeholder="1. Book Name
+2. Book Name
+3. Book Name">
+</textarea>
+
+</div>
+
+<!-- Current Book -->
+
+<div class="section">
+
+<h2>📖 Current Book</h2>
+
+<input
+type="text"
+placeholder="Book Title">
+
+<input
+type="text"
+placeholder="Author Name">
+
+</div>
+
+<!-- Reading Plan -->
+
+<div class="section">
+
+<h2>🎯 Reading Plan</h2>
+
+<input
+type="number"
+placeholder="Total Pages">
+
+<input
+type="number"
+placeholder="Days To Finish">
+
+<input
+type="number"
+placeholder="Pages Per Day">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reading Plan Created ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Daily Reading Log -->
+
+<div class="section">
+
+<h2>📅 Daily Reading Log</h2>
+
+<input
+type="number"
+placeholder="Start Page">
+
+<input
+type="number"
+placeholder="End Page">
+
+<textarea
+placeholder="How was today's reading session?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Today's Reading Completed 📖
+</label>
+
+</div>
+
+</div>
+
+
+<!-- What Did I Learn Today -->
+
+<div class="section">
+
+<h2>🧠 What Did I Learn Today?</h2>
+
+<textarea
+placeholder="Write the most important thing you learned today...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Knowledge Saved 🌿
+</label>
+
+</div>
+
+</div>
+
+<!-- Golden Idea -->
+
+<div class="section">
+
+<h2>💎 Golden Idea</h2>
+
+<textarea
+placeholder="The most valuable idea from today's reading...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Golden Idea Saved ✨
+</label>
+
+</div>
+
+</div>
+
+<!-- Favorite Quote -->
+
+<div class="section">
+
+<h2>⭐ Favorite Quote</h2>
+
+<textarea
+placeholder="Write your favorite quote from the book...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Quote Saved 📖
+</label>
+
+</div>
+
+</div>
+
+<!-- Reflection -->
+
+<div class="section">
+
+<h2>🌱 How Will I Use This?</h2>
+
+<textarea
+placeholder="How can you apply what you learned in real life?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Reflection Completed 🌸
+</label>
+
+</div>
+
+</div>
+
+<!-- Finished Books -->
+
+<div class="section">
+
+<h2>🏆 Finished Books</h2>
+
+<textarea
+placeholder="List completed books here...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Book Finished 🎉
+</label>
+
+</div>
+
+</div>
+
+<!-- Reading Streak -->
+
+<div class="section">
+
+<h2>🍂 Reading Streak</h2>
+
+<h1 id="streakDays">
+
+0 Days
+
+</h1>
+
+</div>
+
+<!-- Daily Quote -->
+
+<div class="section">
+
+<h2>✨ Reading Inspiration</h2>
+
+<p id="quote">
+
+A reader lives a thousand lives before he dies.
+
+</p>
+
+</div>
+<script>
+
+/* ==========================
+   Reading Quotes
+========================== */
+
+const quotes = [
+
+"📚 A reader lives a thousand lives.",
+
+"🍂 Books are gardens carried in the pocket.",
+
+"✨ Reading is dreaming with open eyes.",
+
+"🌿 Knowledge grows when shared.",
+
+"📖 Every page turns you into a better version of yourself.",
+
+"☕ Read a little every day.",
+
+"💎 Great books create great minds."
+
+];
+
+const today =
+new Date().getDate();
+
+document.getElementById("quote").innerText =
+quotes[today % quotes.length];
+
+/* ==========================
+   Progress System
+========================== */
+
+const tasks =
+document.querySelectorAll(".taskCheck");
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"reading_task_"+index
+);
+
+if(saved==="true"){
+
+task.checked=true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"reading_task_"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+/* ==========================
+   Reading Progress Circle
+========================== */
+
+function updateProgress(){
+
+const total =
+tasks.length;
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/total)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent + "%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#D97706 ${percent*3.6}deg,
+#E5E7EB ${percent*3.6}deg
+)`;
+
+checkCompletion(percent);
+
+}
+
+/* ==========================
+   Completion Effect
+========================== */
+
+function checkCompletion(percent){
+
+if(percent===100){
+
+document.querySelector(
+".title"
+).innerHTML =
+"🏆 Reading Mission Complete 🏆";
+
+}
+
+}
+
+/* ==========================
+   Reading Streak
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"reading_last_visit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"reading_streak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"reading_streak",
+streak
+);
+
+localStorage.setItem(
+"reading_last_visit",
+today
+);
+
+}
+
+document.getElementById(
+"streakDays"
+).innerText =
+(localStorage.getItem(
+"reading_streak"
+)||0)
++ " Days";
+
+}
+
+/* ==========================
+   Save Inputs
+========================== */
+
+const inputs =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+inputs.forEach((input,index)=>{
+
+if(
+!input.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"reading_input_"+index;
+
+const saved =
+localStorage.getItem(key);
+
+if(saved){
+
+input.value =
+saved;
+
+}
+
+input.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+input.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Auto Pages Calculator
+========================== */
+
+const totalPagesInput =
+document.querySelectorAll("input")[2];
+
+const daysInput =
+document.querySelectorAll("input")[3];
+
+const pagesPerDayInput =
+document.querySelectorAll("input")[4];
+
+function calculatePages(){
+
+const totalPages =
+parseInt(totalPagesInput.value);
+
+const days =
+parseInt(daysInput.value);
+
+if(
+!isNaN(totalPages)
+&&
+!isNaN(days)
+&&
+days > 0
+){
+
+pagesPerDayInput.value =
+Math.ceil(totalPages / days);
+
+}
+
+}
+
+if(totalPagesInput && daysInput){
+
+totalPagesInput.addEventListener(
+"input",
+calculatePages
+);
+
+daysInput.addEventListener(
+"input",
+calculatePages
+);
+
+}
+
+/* ==========================
+   Start
+========================== */
+
+updateStreak();
+
+updateProgress();
+
+</script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Fitness Mission</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#050816,
+#0F172A,
+#111827,
+#1E293B
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+}
+
+/* Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:500px;
+height:500px;
+
+background:#00BFFF;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.18;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:500px;
+height:500px;
+
+background:#2563EB;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+opacity:.18;
+}
+
+/* Floating Icons */
+
+.float{
+
+position:fixed;
+
+font-size:30px;
+
+animation:float 6s infinite ease-in-out;
+
+pointer-events:none;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:18%;right:8%;}
+.f3{bottom:20%;left:8%;}
+.f4{bottom:15%;right:8%;}
+.f5{top:50%;left:3%;}
+.f6{top:35%;right:3%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+}
+
+/* Title */
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:white;
+
+letter-spacing:2px;
+
+text-shadow:
+0 0 10px #00BFFF,
+0 0 30px #00BFFF,
+0 0 60px #2563EB;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:20px;
+
+font-weight:600;
+
+color:#CBD5E1;
+
+margin-bottom:30px;
+}
+
+/* Progress */
+
+.progress-card{
+
+background:
+rgba(15,23,42,.65);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+background:
+conic-gradient(
+#00BFFF 0deg,
+#1F2937 0deg
+);
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:#0F172A;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:white;
+}
+
+/* Sections */
+
+.section{
+
+background:
+rgba(15,23,42,.65);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.section h2{
+
+color:#38BDF8;
+
+margin-bottom:15px;
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+
+background:#1E293B;
+
+color:white;
+}
+
+.task-complete{
+
+margin-top:20px;
+
+padding:15px;
+
+background:#1E293B;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.taskCheck{
+
+width:22px;
+height:22px;
+
+cursor:pointer;
+}
+
+.task-complete label{
+
+font-weight:600;
+
+color:#E2E8F0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">⚡</div>
+<div class="float f2">🔥</div>
+<div class="float f3">⚽</div>
+<div class="float f4">🏀</div>
+<div class="float f5">🏆</div>
+<div class="float f6">🚀</div>
+
+<div class="container">
+
+<h1 class="title">
+⚡ Fitness Mission
+</h1>
+
+<p class="subtitle">
+Build Strength • Build Discipline • Build Your Future
+</p>
+
+<div class="progress-card">
+
+<h2>
+Mission Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Wake Up -->
+
+<div class="section">
+
+<h2>⏰ Wake Up Tracker</h2>
+
+<input
+type="time"
+placeholder="Wake Up Time">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Completed Wake Up Task ⚡
+</label>
+
+</div>
+
+</div>
+
+<!-- Water -->
+
+<div class="section">
+
+<h2>💧 Hydration Mission</h2>
+
+<p>
+Did you drink enough water today?
+</p>
+
+<input
+type="number"
+placeholder="Glasses of Water">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Hydration Goal Completed 💧
+</label>
+
+</div>
+
+</div>
+
+<!-- Workout -->
+
+<div class="section">
+
+<h2>💪 Workout Tracker</h2>
+
+<input
+type="number"
+placeholder="Workout Minutes">
+
+<select>
+
+<option>
+🏋️ Gym
+</option>
+
+<option>
+⚽ Football
+</option>
+
+<option>
+🏀 Basketball
+</option>
+
+<option>
+🥊 Boxing
+</option>
+
+<option>
+🏃 Running
+</option>
+
+<option>
+🏊 Swimming
+</option>
+
+<option>
+🚴 Cycling
+</option>
+
+</select>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Workout Completed 💪
+</label>
+
+</div>
+
+</div>
+
+<!-- Nutrition -->
+
+<div class="section">
+
+<h2>🥩 Nutrition Tracker</h2>
+
+<textarea
+placeholder="Protein, vegetables, healthy meals...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Nutrition Goal Completed 🥩
+</label>
+
+</div>
+
+</div>
+
+<!-- Personal Care -->
+
+<div class="section">
+
+<h2>🦷 Personal Care</h2>
+
+<textarea
+placeholder="Shower, teeth, grooming...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Personal Care Completed 🦷
+</label>
+
+</div>
+
+</div>
+
+<!-- Sleep -->
+
+<div class="section">
+
+<h2>😴 Sleep Tracker</h2>
+
+<input
+type="time"
+placeholder="Sleep Time">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Sleep Goal Completed 🌙
+</label>
+
+</div>
+
+</div>
+
+<!-- Fitness Goal -->
+
+<div class="section">
+
+<h2>🎯 Fitness Goal</h2>
+
+<textarea
+placeholder="Gain Muscle, Lose Weight, Improve Stamina...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Goal Updated 🎯
+</label>
+
+</div>
+
+</div>
+
+<!-- Mood -->
+
+<div class="section">
+
+<h2>😎 Today's Mood</h2>
+
+<select>
+
+<option>😎 Focused</option>
+<option>🔥 Motivated</option>
+<option>⚡ Energetic</option>
+<option>💪 Strong</option>
+<option>🏆 Champion</option>
+
+</select>
+
+</div>
+
+<!-- Streak -->
+
+<div class="section">
+
+<h2>🏆 Discipline Streak</h2>
+
+<h1 id="streakDays">
+0 Days
+</h1>
+
+</div>
+
+<!-- Daily Quote -->
+
+<div class="section">
+
+<h2>⚡ Daily Quote</h2>
+
+<p id="quote">
+
+Discipline beats motivation.
+
+</p>
+
+</div>
+<script>
+
+/* ==========================
+   Daily Quotes
+========================== */
+
+const quotes = [
+
+"⚡ Discipline beats motivation.",
+
+"💪 Train hard, stay strong.",
+
+"🏆 Consistency creates results.",
+
+"🚀 One step forward every day.",
+
+"🔥 Strong habits build strong men.",
+
+"⚽ Focus on the goal.",
+
+"💎 Become better than yesterday."
+
+];
+
+const today =
+new Date().getDate();
+
+document.getElementById("quote").innerText =
+quotes[today % quotes.length];
+
+/* ==========================
+   Task Progress
+========================== */
+
+const tasks =
+document.querySelectorAll(".taskCheck");
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"boys_task_"+index
+);
+
+if(saved==="true"){
+
+task.checked=true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boys_task_"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+/* ==========================
+   Progress Circle
+========================== */
+
+function updateProgress(){
+
+const total =
+tasks.length;
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/total)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent + "%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#00BFFF ${percent*3.6}deg,
+#1F2937 ${percent*3.6}deg
+)`;
+
+checkMission(percent);
+
+}
+
+/* ==========================
+   Mission Complete
+========================== */
+
+function checkMission(percent){
+
+if(percent===100){
+
+document.querySelector(
+".title"
+).innerHTML =
+"🏆 MISSION COMPLETED 🏆";
+
+document.querySelector(
+".title"
+).style.textShadow =
+"0 0 20px #00BFFF,0 0 50px #00BFFF,0 0 100px #00BFFF";
+
+}
+
+}
+
+/* ==========================
+   Discipline Streak
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"boys_last_visit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"boys_streak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"boys_streak",
+streak
+);
+
+localStorage.setItem(
+"boys_last_visit",
+today
+);
+
+}
+
+document.getElementById(
+"streakDays"
+).innerText =
+(localStorage.getItem(
+"boys_streak"
+)||0)
++" Days";
+
+}
+
+/* ==========================
+   Save Inputs
+========================== */
+
+const inputs =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+inputs.forEach((input,index)=>{
+
+if(
+!input.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"boys_input_"+index;
+
+const saved =
+localStorage.getItem(key);
+
+if(saved){
+
+input.value=saved;
+
+}
+
+input.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+input.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   XP System
+========================== */
+
+function calculateXP(){
+
+let xp = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+xp += 10;
+
+}
+
+});
+
+return xp;
+
+}
+
+/* ==========================
+   Start
+========================== */
+
+updateStreak();
+
+updateProgress();
+
+console.log(
+"XP:",
+calculateXP()
+);
+
+</script>
+
+</div>
+
+</body>
+</html>

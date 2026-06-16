@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Girls Space</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+background:
+linear-gradient(
+135deg,
+#ffe5f1,
+#ffd6e8,
+#e6d6ff,
+#d6f0ff
+);
+
+overflow-x:hidden;
+
+padding:30px;
+
+position:relative;
+}
+
+/* الخلفية */
+
+body::before{
+content:"";
+
+position:fixed;
+
+top:-250px;
+left:-250px;
+
+width:500px;
+height:500px;
+
+background:#ff9ecf;
+
+border-radius:50%;
+
+filter:blur(160px);
+
+opacity:.4;
+}
+
+body::after{
+content:"";
+
+position:fixed;
+
+bottom:-250px;
+right:-250px;
+
+width:500px;
+height:500px;
+
+background:#c084fc;
+
+border-radius:50%;
+
+filter:blur(160px);
+
+opacity:.35;
+}
+
+/* العناصر المتحركة */
+
+.floating{
+position:fixed;
+font-size:28px;
+opacity:.65;
+animation:float 8s infinite ease-in-out;
+pointer-events:none;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:18%;right:8%;}
+.f3{top:70%;left:8%;}
+.f4{top:75%;right:6%;}
+.f5{top:35%;left:15%;}
+.f6{top:30%;right:18%;}
+.f7{top:50%;left:90%;}
+.f8{top:12%;left:85%;}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-18px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* الحاوية */
+
+.container{
+max-width:1300px;
+margin:auto;
+position:relative;
+z-index:2;
+}
+
+/* العنوان */
+
+.title{
+
+text-align:center;
+
+font-size:80px;
+
+font-weight:800;
+
+color:white;
+
+text-shadow:
+0 0 10px white,
+0 0 20px #ff8dc7,
+0 0 40px #ff8dc7,
+0 0 80px #c084fc;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#7c3a67;
+
+margin-bottom:40px;
+
+text-shadow:
+0 0 8px rgba(255,255,255,.8);
+}
+
+/* البطاقة الرئيسية */
+
+.hero{
+
+background:
+rgba(255,255,255,.45);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.7);
+
+border-radius:35px;
+
+padding:40px;
+
+text-align:center;
+
+box-shadow:
+0 10px 30px rgba(255,255,255,.3),
+0 0 40px rgba(255,105,180,.15);
+
+margin-bottom:40px;
+}
+
+.hero h2{
+
+font-size:36px;
+
+color:#d63384;
+
+margin-bottom:15px;
+}
+
+.hero p{
+
+font-size:18px;
+
+color:#6d4c5c;
+
+line-height:1.8;
+}
+
+/* Mood */
+
+.mood{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-top:25px;
+}
+
+.mood span{
+
+font-size:35px;
+
+cursor:pointer;
+
+transition:.3s;
+}
+
+.mood span:hover{
+
+transform:scale(1.2);
+}
+
+/* شبكة البطاقات */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+}
+
+.card{
+
+text-decoration:none;
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+padding:30px;
+
+border:1px solid rgba(255,255,255,.8);
+
+position:relative;
+
+overflow:hidden;
+
+transition:.4s;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.05);
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.7),
+transparent
+);
+
+transition:.8s;
+}
+
+.card:hover::before{
+left:120%;
+}
+
+.card:hover{
+
+transform:
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+0 0 20px #ff9ecf,
+0 0 40px #ffb7db,
+0 0 70px rgba(255,182,193,.5);
+}
+
+.icon{
+
+font-size:55px;
+
+margin-bottom:15px;
+}
+
+.card h3{
+
+font-size:30px;
+
+color:#d63384;
+
+margin-bottom:10px;
+}
+
+.card p{
+
+color:#6d4c5c;
+
+line-height:1.8;
+}
+
+/* ألوان البطاقات */
+
+.health{
+border-left:8px solid #ff85c1;
+}
+
+.reading{
+border-left:8px solid #ffc857;
+}
+
+.learning{
+border-left:8px solid #6ea8ff;
+}
+
+.faith{
+border-left:8px solid #8ce99a;
+}
+
+.goals{
+border-left:8px solid #c084fc;
+}
+
+.notes{
+border-left:8px solid #ff9ecf;
+}
+
+/* الاقتباس */
+
+.quote{
+
+margin-top:40px;
+
+padding:25px;
+
+text-align:center;
+
+background:
+rgba(255,255,255,.45);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+font-size:24px;
+
+font-weight:600;
+
+color:#b03060;
+
+box-shadow:
+0 0 20px rgba(255,192,203,.4);
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:50px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.hero h2{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating f1">🦋</div>
+<div class="floating f2">🌸</div>
+<div class="floating f3">🍓</div>
+<div class="floating f4">✨</div>
+<div class="floating f5">🌷</div>
+<div class="floating f6">⭐</div>
+<div class="floating f7">🎀</div>
+<div class="floating f8">💖</div>
+
+<div class="container">
+
+<div class="title">
+🌸 GIRLS SPACE 🌸
+</div>
+
+<div class="subtitle">
+Grow Beautifully Every Day
+</div>
+
+<div class="hero">
+
+<h2>🌷 Bloom At Your Own Pace 🌷</h2>
+
+<p>
+Small steps create beautiful results.
+Believe in yourself, trust your journey,
+and keep moving forward every day.
+</p>
+
+<div class="mood">
+
+<span>😊</span>
+<span>🌸</span>
+<span>✨</span>
+<span>😍</span>
+<span>🦋</span>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<a href="LP.html" class="card health">
+<div class="icon">🌷</div>
+<h3>Health</h3>
+<p>Healthy habits, self-care and fitness.</p>
+</a>
+
+<a href="RE.html" class="card reading">
+<div class="icon">📚</div>
+<h3>Reading</h3>
+<p>Books, stories and daily reading goals.</p>
+</a>
+
+<a href="N.html" class="card learning">
+<div class="icon">💻</div>
+<h3>Learning</h3>
+<p>Languages, coding and new skills.</p>
+</a>
+
+<a href="gh.html" class="card faith">
+<div class="icon">🕌</div>
+<h3>Faith</h3>
+<p>Prayer, Quran and spiritual growth.</p>
+</a>
+
+<a href="UY.html" class="card goals">
+<div class="icon">🎯</div>
+<h3>Goals</h3>
+<p>Track your dreams and achievements.</p>
+</a>
+
+<a href="IO.html" class="card notes">
+<div class="icon">📝</div>
+<h3>Notes</h3>
+<p>Write ideas, reminders and reflections.</p>
+</a>
+
+</div>
+
+<div class="quote">
+🌸 Your future is blooming one step at a time 🌸
+</div>
+
+</div>
+
+</body>
+</html>

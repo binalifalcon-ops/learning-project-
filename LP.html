@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Girls Health Journey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#B8F2E6,
+#A9DEF9,
+#E4C1F9,
+#FDE2E4
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+}
+
+/* خلفية */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:450px;
+height:450px;
+
+background:#7BDFF2;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:450px;
+height:450px;
+
+background:#B2F7EF;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+/* عناصر متحركة */
+
+.float{
+
+position:fixed;
+
+font-size:30px;
+
+animation:float 6s infinite ease-in-out;
+
+pointer-events:none;
+}
+
+.f1{
+top:10%;
+left:5%;
+}
+
+.f2{
+top:20%;
+right:10%;
+}
+
+.f3{
+bottom:20%;
+left:8%;
+}
+
+.f4{
+bottom:15%;
+right:8%;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+}
+
+/* عنوان */
+
+.title{
+
+text-align:center;
+
+font-size:60px;
+
+font-weight:800;
+
+color:white;
+
+text-shadow:
+0 0 15px white,
+0 0 30px #7BDFF2;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:20px;
+
+font-weight:600;
+
+color:#355070;
+
+margin-bottom:30px;
+}
+
+/* بطاقة التقدم */
+
+.progress-card{
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+background:
+conic-gradient(
+#7BDFF2 0deg,
+#E5E7EB 0deg
+);
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:white;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:#355070;
+}
+
+/* البطاقات */
+
+.section{
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+}
+
+.section h2{
+
+color:#355070;
+
+margin-bottom:15px;
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+}
+
+/* زر الإنجاز */
+
+.task-complete{
+
+margin-top:20px;
+
+padding:15px;
+
+background:white;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.taskCheck{
+
+width:22px;
+height:22px;
+
+cursor:pointer;
+}
+
+.task-complete label{
+
+font-weight:600;
+
+color:#355070;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🌸</div>
+<div class="float f2">🦋</div>
+<div class="float f3">🌷</div>
+<div class="float f4">✨</div>
+
+<div class="container">
+
+<h1 class="title">
+🌷 Health Journey
+</h1>
+
+<p class="subtitle">
+Take care of yourself every day
+</p>
+
+<div class="progress-card">
+
+<h2>
+Today's Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Wake Up -->
+
+<div class="section">
+
+<h2>🌅 Wake Up Tracker</h2>
+
+<input
+type="time"
+placeholder="Wake Up Time">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Completed Wake Up Task ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Water -->
+
+<div class="section">
+
+<h2>💧 Water Tracker</h2>
+
+<p>
+Did you drink 8 glasses today?
+</p>
+
+<input
+type="number"
+placeholder="Number of glasses">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Completed Water Goal ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Exercise -->
+
+<div class="section">
+
+<h2>🏃 Exercise Tracker</h2>
+
+<input
+type="number"
+placeholder="Minutes">
+
+<select>
+
+<option>
+Walking 🚶
+</option>
+
+<option>
+Running 🏃
+</option>
+
+<option>
+Yoga 🧘
+</option>
+
+<option>
+Cycling 🚴
+</option>
+
+<option>
+Gym 🏋️
+</option>
+
+<option>
+Dance 💃
+</option>
+
+</select>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Completed Exercise ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Nutrition -->
+
+<div class="section">
+
+<h2>🥗 Nutrition Tracker</h2>
+
+<textarea
+placeholder="Write what you ate today">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Healthy Nutrition Completed ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Personal Care -->
+
+<div class="section">
+
+<h2>🪥 Personal Care</h2>
+
+<textarea
+placeholder="Shower, Teeth, Skin Care...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Personal Care Completed ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Sleep -->
+
+<div class="section">
+
+<h2>😴 Sleep Tracker</h2>
+
+<input
+type="time"
+placeholder="Sleep Time">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Sleep Goal Completed ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Health Goal -->
+
+<div class="section">
+
+<h2>🎯 My Health Goal</h2>
+
+<textarea
+placeholder="What do you want to achieve with your health?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Goal Updated ✅
+</label>
+
+</div>
+
+</div>
+
+<!-- Mood -->
+
+<div class="section">
+
+<h2>😊 Today's Mood</h2>
+
+<select>
+
+<option>
+😊 Happy
+</option>
+
+<option>
+😍 Excited
+</option>
+
+<option>
+😌 Calm
+</option>
+
+<option>
+🌸 Relaxed
+</option>
+
+<option>
+✨ Motivated
+</option>
+
+</select>
+
+</div>
+
+<!-- Streak -->
+
+<div class="section">
+
+<h2>🏆 Healthy Streak</h2>
+
+<h1 id="streakDays">
+0 Days
+</h1>
+
+</div>
+
+<!-- Quote -->
+
+<div class="section">
+
+<h2>🌸 Daily Quote</h2>
+
+<p id="quote">
+
+Small healthy habits create big changes.
+
+</p>
+
+</div>
+<script>
+
+/* ==========================
+   Daily Quotes
+========================== */
+
+const quotes = [
+
+"🌸 Small healthy habits create big changes.",
+
+"💧 Your body deserves care and love.",
+
+"🦋 Progress is better than perfection.",
+
+"🌷 Every healthy choice matters.",
+
+"✨ Take care of yourself today.",
+
+"🍓 Health is self-love.",
+
+"🌿 One step at a time."
+
+];
+
+const today =
+new Date().getDate();
+
+document.getElementById("quote").innerText =
+quotes[today % quotes.length];
+
+/* ==========================
+   Task Progress
+========================== */
+
+const tasks =
+document.querySelectorAll(".taskCheck");
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"health_task_"+index
+);
+
+if(saved==="true"){
+
+task.checked = true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"health_task_"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+/* ==========================
+   Progress Circle
+========================== */
+
+function updateProgress(){
+
+const total =
+tasks.length;
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/total)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent + "%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#7BDFF2 ${percent*3.6}deg,
+#E5E7EB ${percent*3.6}deg
+)`;
+
+checkFullCompletion(percent);
+
+}
+
+/* ==========================
+   Completion Effect
+========================== */
+
+function checkFullCompletion(percent){
+
+if(percent===100){
+
+document.querySelector(
+".title"
+).innerHTML =
+"🌟 Perfect Day! 🌟";
+
+}
+
+}
+
+/* ==========================
+   Streak System
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"last_visit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"health_streak"
+)
+) || 0;
+
+streak++;
+
+localStorage.setItem(
+"health_streak",
+streak
+);
+
+localStorage.setItem(
+"last_visit",
+today
+);
+
+}
+
+document.getElementById(
+"streakDays"
+).innerText =
+(localStorage.getItem(
+"health_streak"
+) || 0)
++ " Days";
+
+}
+
+/* ==========================
+   Save Inputs
+========================== */
+
+const inputs =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+inputs.forEach((input,index)=>{
+
+if(
+!input.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"health_input_"+index;
+
+const saved =
+localStorage.getItem(key);
+
+if(saved){
+
+if(
+input.type==="checkbox"
+){
+
+input.checked =
+saved==="true";
+
+}else{
+
+input.value =
+saved;
+
+}
+
+}
+
+input.addEventListener(
+"input",
+()=>{
+
+if(
+input.type==="checkbox"
+){
+
+localStorage.setItem(
+key,
+input.checked
+);
+
+}else{
+
+localStorage.setItem(
+key,
+input.value
+);
+
+}
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Start
+========================== */
+
+updateStreak();
+
+updateProgress();
+
+</script>
+
+</div>
+
+</body>
+</html>

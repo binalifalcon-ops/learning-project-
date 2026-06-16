@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Faith Garden</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#FFF9FC,
+#FDF4FF,
+#F3E8FF,
+#E0F2FE
+);
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+}
+
+/* Glows */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-200px;
+left:-200px;
+
+width:450px;
+height:450px;
+
+background:#F9A8D4;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-200px;
+right:-200px;
+
+width:450px;
+height:450px;
+
+background:#C4B5FD;
+
+border-radius:50%;
+
+filter:blur(150px);
+
+opacity:.25;
+}
+
+/* Floating Icons */
+
+.float{
+
+position:fixed;
+
+font-size:30px;
+
+animation:float 6s infinite ease-in-out;
+
+pointer-events:none;
+}
+
+.f1{top:8%;left:5%;}
+.f2{top:18%;right:8%;}
+.f3{bottom:15%;left:8%;}
+.f4{bottom:15%;right:8%;}
+.f5{top:40%;left:5%;}
+.f6{top:35%;right:5%;}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+text-align:center;
+
+font-size:65px;
+
+font-weight:800;
+
+color:#A855F7;
+
+text-shadow:
+0 0 15px #F9A8D4,
+0 0 35px #C4B5FD;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:600;
+
+color:#7C3AED;
+
+margin-bottom:35px;
+}
+
+.progress-card{
+
+background:
+rgba(255,255,255,.65);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+}
+
+.progress-circle{
+
+width:200px;
+height:200px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+background:
+conic-gradient(
+#C084FC 0deg,
+#E5E7EB 0deg
+);
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+background:white;
+
+border-radius:50%;
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:38px;
+
+font-weight:700;
+
+color:#7C3AED;
+}
+
+.section{
+
+background:
+rgba(255,255,255,.65);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-bottom:20px;
+}
+
+.section h2{
+
+color:#9333EA;
+
+margin-bottom:15px;
+}
+
+input,
+textarea,
+select{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:15px;
+
+margin-top:10px;
+
+background:white;
+}
+
+.task-complete{
+
+margin-top:20px;
+
+padding:15px;
+
+background:white;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.taskCheck{
+
+width:22px;
+height:22px;
+}
+
+.task-complete label{
+
+font-weight:600;
+
+color:#7C3AED;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="float f1">🌙</div>
+<div class="float f2">⭐</div>
+<div class="float f3">☁️</div>
+<div class="float f4">🕌</div>
+<div class="float f5">✨</div>
+<div class="float f6">🤍</div>
+
+<div class="container">
+
+<h1 class="title">
+🌙 Faith Garden
+</h1>
+
+<p class="subtitle">
+Grow your faith every day
+</p>
+
+<div class="progress-card">
+
+<h2>
+Faith Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Prayer Tracker -->
+
+<div class="section">
+
+<h2>🕌 Prayer Tracker</h2>
+
+<h3>Fajr</h3>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Prayed Fajr 🌅
+</label>
+
+</div>
+
+<select>
+
+<option>On Time ⏰</option>
+
+<option>Late 🌙</option>
+
+</select>
+
+<br><br>
+
+<h3>Dhuhr</h3>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Prayed Dhuhr ☀️
+</label>
+
+</div>
+
+<select>
+
+<option>On Time ⏰</option>
+
+<option>Late 🌙</option>
+
+</select>
+
+<br><br>
+
+<h3>Asr</h3>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Prayed Asr 🌤️
+</label>
+
+</div>
+
+<select>
+
+<option>On Time ⏰</option>
+
+<option>Late 🌙</option>
+
+</select>
+
+<br><br>
+
+<h3>Maghrib</h3>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Prayed Maghrib 🌇
+</label>
+
+</div>
+
+<select>
+
+<option>On Time ⏰</option>
+
+<option>Late 🌙</option>
+
+</select>
+
+<br><br>
+
+<h3>Isha</h3>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Prayed Isha 🌙
+</label>
+
+</div>
+
+<select>
+
+<option>On Time ⏰</option>
+
+<option>Late 🌙</option>
+
+</select>
+
+</div>
+
+<!-- Quran Journey -->
+
+<div class="section">
+
+<h2>📖 Quran Journey</h2>
+
+<input
+type="number"
+placeholder="Current Juz (1-30)">
+
+<input
+type="text"
+placeholder="Current Surah">
+
+<input
+type="number"
+placeholder="Pages Per Day">
+
+<input
+type="date">
+
+<textarea
+placeholder="Today's Quran Notes">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Today's Quran Reading Completed 📖
+</label>
+
+</div>
+
+</div>
+
+<!-- Quran Progress -->
+
+<div class="section">
+
+<h2>🌸 Quran Goal</h2>
+
+<input
+type="number"
+placeholder="Target Pages">
+
+<input
+type="number"
+placeholder="Pages Read Today">
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Goal Completed ✨
+</label>
+
+</div>
+
+</div><!-- Morning Adhkar -->
+
+<div class="section">
+
+<h2>🌸 Morning Adhkar</h2>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Subhan Allah (33)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Alhamdulillah (33)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Allahu Akbar (34)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Ayat Al-Kursi
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Ikhlas
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Falaq
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah An-Nas
+</label>
+
+</div>
+
+</div>
+
+<!-- Evening Adhkar -->
+
+<div class="section">
+
+<h2>🌙 Evening Adhkar</h2>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Ayat Al-Kursi
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Ikhlas
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Falaq
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah An-Nas
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Astaghfirullah (100)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+La Ilaha Illa Allah
+</label>
+
+</div>
+
+</div>
+
+<!-- Before Sleep Adhkar -->
+
+<div class="section">
+
+<h2>😴 Before Sleep Adhkar</h2>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Ayat Al-Kursi
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Ikhlas
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah Al-Falaq
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Surah An-Nas
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Subhan Allah (33)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Alhamdulillah (33)
+</label>
+
+</div>
+
+<div class="task-complete">
+
+<input type="checkbox" class="taskCheck">
+
+<label>
+Allahu Akbar (34)
+</label>
+
+</div>
+
+</div>
+
+
+<!-- Daily Islamic Knowledge -->
+
+<div class="section">
+
+<h2>🌷 Daily Islamic Knowledge</h2>
+
+<div
+id="dailyKnowledge"
+
+style="
+padding:20px;
+background:white;
+border-radius:15px;
+font-size:18px;
+font-weight:600;
+color:#7C3AED;
+line-height:1.8;
+">
+
+Knowledge Loading...
+
+</div>
+
+</div>
+
+<!-- My Dua -->
+
+<div class="section">
+
+<h2>🤲 My Dua Today</h2>
+
+<textarea
+placeholder="Write your dua here...">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Dua Written 🤍
+</label>
+
+</div>
+
+</div>
+
+<!-- Good Deed -->
+
+<div class="section">
+
+<h2>🌸 Good Deed Today</h2>
+
+<textarea
+placeholder="What good deed did you do today?">
+</textarea>
+
+<div class="task-complete">
+
+<input
+type="checkbox"
+class="taskCheck">
+
+<label>
+Good Deed Recorded ✨
+</label>
+
+</div>
+
+</div>
+
+<!-- Faith Streak -->
+
+<div class="section">
+
+<h2>🏆 Faith Streak</h2>
+
+<h1
+id="streakDays"
+style="
+font-size:55px;
+color:#A855F7;
+text-align:center;
+">
+
+0 Days
+
+</h1>
+
+</div>
+
+<!-- Daily Inspiration -->
+
+<div class="section">
+
+<h2>✨ Daily Inspiration</h2>
+
+<p
+id="quote"
+style="
+font-size:20px;
+line-height:1.8;
+color:#7C3AED;
+">
+
+Allah is with the patient.
+
+</p>
+
+</div>
+<script>
+
+/* ==========================
+   Daily Islamic Knowledge
+========================== */
+
+const islamicKnowledge = [
+
+"🌷 Respecting parents is one of the greatest acts of worship.",
+
+"🌷 A kind word can be a charity.",
+
+"🌷 Allah loves those who are patient.",
+
+"🌷 Seeking knowledge is an obligation for every Muslim.",
+
+"🌷 Smiling at others is charity.",
+
+"🌷 Gratitude increases blessings.",
+
+"🌷 Modesty beautifies character.",
+
+"🌷 Helping others brings reward.",
+
+"🌷 Allah loves those who do good.",
+
+"🌷 Every good deed counts."
+
+];
+
+const faithQuotes = [
+
+"✨ Allah is with the patient.",
+
+"🌙 Trust Allah in every step.",
+
+"🤍 The closer to Allah, the calmer the heart.",
+
+"⭐ Prayer is the light of the believer.",
+
+"🌸 Faith makes every difficulty easier.",
+
+"🕌 Remember Allah and your heart will find peace.",
+
+"✨ Every sincere dua is heard."
+
+];
+
+const today =
+new Date().getDate();
+
+document.getElementById(
+"dailyKnowledge"
+).innerText =
+islamicKnowledge[
+today % islamicKnowledge.length
+];
+
+document.getElementById(
+"quote"
+).innerText =
+faithQuotes[
+today % faithQuotes.length
+];
+
+/* ==========================
+   Progress System
+========================== */
+
+const tasks =
+document.querySelectorAll(
+".taskCheck"
+);
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"faith_task_"+index
+);
+
+if(saved==="true"){
+
+task.checked=true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"faith_task_"+index,
+task.checked
+);
+
+updateProgress();
+
+}
+);
+
+});
+
+/* ==========================
+   Progress Circle
+========================== */
+
+function updateProgress(){
+
+const total =
+tasks.length;
+
+let completed = 0;
+
+tasks.forEach(task=>{
+
+if(task.checked){
+
+completed++;
+
+}
+
+});
+
+const percent =
+Math.round(
+(completed/total)*100
+);
+
+document.getElementById(
+"progressValue"
+).innerText =
+percent + "%";
+
+document.getElementById(
+"circle"
+).style.background =
+`conic-gradient(
+#C084FC ${percent*3.6}deg,
+#E5E7EB ${percent*3.6}deg
+)`;
+
+checkCompletion(percent);
+
+}
+
+/* ==========================
+   Completion Effect
+========================== */
+
+function checkCompletion(percent){
+
+if(percent===100){
+
+document.querySelector(
+".title"
+).innerHTML =
+"🌙 Faith Mission Complete 🌙";
+
+}
+
+}
+
+/* ==========================
+   Faith Streak
+========================== */
+
+function updateStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"faith_last_visit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"faith_streak"
+)
+)||0;
+
+streak++;
+
+localStorage.setItem(
+"faith_streak",
+streak
+);
+
+localStorage.setItem(
+"faith_last_visit",
+today
+);
+
+}
+
+document.getElementById(
+"streakDays"
+).innerText =
+(localStorage.getItem(
+"faith_streak"
+)||0)
++" Days";
+
+}
+
+/* ==========================
+   Save Inputs
+========================== */
+
+const inputs =
+document.querySelectorAll(
+"input, textarea, select"
+);
+
+inputs.forEach((input,index)=>{
+
+if(
+!input.classList.contains(
+"taskCheck"
+)
+){
+
+const key =
+"faith_input_"+index;
+
+const saved =
+localStorage.getItem(
+key
+);
+
+if(saved){
+
+input.value =
+saved;
+
+}
+
+input.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+input.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Auto Save Message
+========================== */
+
+function autoSaveNotice(){
+
+console.log(
+"Faith Garden Saved Successfully"
+);
+
+}
+
+setInterval(
+autoSaveNotice,
+10000
+);
+
+/* ==========================
+   Start
+========================== */
+
+updateProgress();
+
+updateStreak();
+
+</script>
+
+</div>
+
+</body>
+</html>

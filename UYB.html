@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mission Control</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0F172A,
+#111827,
+#1E293B
+);
+
+min-height:100vh;
+padding:25px;
+overflow-x:hidden;
+
+color:white;
+
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+
+font-size:65px;
+font-weight:800;
+
+text-align:center;
+
+background:
+linear-gradient(
+90deg,
+#38BDF8,
+#60A5FA,
+#93C5FD
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+font-size:22px;
+
+color:#CBD5E1;
+
+margin-bottom:30px;
+
+}
+
+.section{
+
+background:
+rgba(15,23,42,.85);
+
+padding:25px;
+
+border-radius:30px;
+
+backdrop-filter:blur(15px);
+
+margin-bottom:20px;
+
+border:1px solid rgba(56,189,248,.15);
+
+}
+
+.section h2{
+
+color:#38BDF8;
+
+margin-bottom:15px;
+
+}
+
+input,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:18px;
+
+margin-top:10px;
+
+font-size:16px;
+
+background:#111827;
+color:white;
+
+}
+
+.progress-circle{
+
+width:220px;
+height:220px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:
+conic-gradient(
+#38BDF8 0deg,
+#1E293B 0deg
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+}
+
+.progress-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:165px;
+height:165px;
+
+background:#0F172A;
+
+border-radius:50%;
+
+}
+
+.progress-value{
+
+position:relative;
+
+font-size:42px;
+font-weight:800;
+
+color:#38BDF8;
+
+}
+
+.task{
+
+display:flex;
+gap:10px;
+
+padding:15px;
+
+margin-top:12px;
+
+background:#111827;
+
+border-radius:15px;
+
+}
+
+.task input{
+
+width:22px;
+height:22px;
+
+}
+
+.mission-card{
+
+background:#111827;
+
+padding:18px;
+
+border-radius:20px;
+
+margin-top:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+🚀 Mission Control
+</h1>
+
+<p class="subtitle">
+Turn Missions Into Achievements
+</p>
+
+<div class="section">
+
+<h2>
+🚀 Mission Progress
+</h2>
+
+<div
+class="progress-circle"
+id="circle">
+
+<div
+class="progress-value"
+id="progressValue">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+<!-- Main Mission -->
+
+<div class="section">
+
+<h2>🎯 Main Mission</h2>
+
+<p style="color:#CBD5E1;">
+Your most important mission this year
+</p>
+
+<input
+type="text"
+id="mainMission"
+placeholder="Write your main mission..."
+>
+
+</div>
+
+<!-- Mission Reason -->
+
+<div class="section">
+
+<h2>⚡ Why This Mission?</h2>
+
+<p style="color:#CBD5E1;">
+A strong reason creates strong discipline
+</p>
+
+<textarea
+id="missionReason"
+rows="6"
+placeholder="Why is this mission important?"
+></textarea>
+
+</div>
+
+<!-- Mission Progress -->
+
+<div class="section">
+
+<h2>📈 Mission Progress</h2>
+
+<p style="color:#CBD5E1;">
+Track your progress
+</p>
+
+<input
+type="range"
+id="missionProgress"
+min="0"
+max="100"
+value="0"
+>
+
+<h1
+
+id="missionPercent"
+
+style="
+text-align:center;
+font-size:50px;
+margin-top:20px;
+color:#38BDF8;
+">
+
+0%
+
+</h1>
+
+</div>
+
+<!-- Mission Of The Year -->
+
+<div class="section">
+
+<h2>🏆 Mission Of The Year</h2>
+
+<div class="mission-card">
+
+<input
+type="text"
+placeholder="My yearly mission..."
+>
+
+<textarea
+rows="5"
+placeholder="Mission plan..."
+></textarea>
+
+</div>
+
+</div>
+<!-- Year Missions -->
+
+<div class="section">
+
+<h2>📅 Year Missions</h2>
+
+<p style="color:#CBD5E1;">
+Major missions for this year
+</p>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>📖 Read 20 Books</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>🌍 Learn New Languages</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>💻 Complete Programming Path</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>💪 Improve Physical Fitness</label>
+</div>
+
+</div>
+
+<!-- Monthly Missions -->
+
+<div class="section">
+
+<h2>🗓️ Monthly Missions</h2>
+
+<p style="color:#CBD5E1;">
+Focus on this month's objectives
+</p>
+
+<textarea
+rows="6"
+placeholder="Write your monthly missions..."
+></textarea>
+
+</div>
+
+<!-- Weekly Missions -->
+
+<div class="section">
+
+<h2>📆 Weekly Missions</h2>
+
+<p style="color:#CBD5E1;">
+Break the mission into weekly steps
+</p>
+
+<textarea
+rows="6"
+placeholder="Write your weekly missions..."
+></textarea>
+
+</div>
+
+<!-- Today's Missions -->
+
+<div class="section">
+
+<h2>✅ Today's Missions</h2>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>📚 Study Today</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>📖 Read Today</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>💪 Exercise Today</label>
+</div>
+
+<div class="task">
+<input type="checkbox" class="taskCheck">
+<label>🚀 Complete One Mission Step</label>
+</div>
+
+</div>
+<!-- Vision Board -->
+
+<div class="section">
+
+<h2>🌌 Vision Board</h2>
+
+<p style="color:#CBD5E1;">
+Write your future plans and ambitions
+</p>
+
+<textarea
+id="visionBoard"
+rows="10"
+placeholder="🚀 Build my own app...
+🌍 Speak multiple languages...
+📖 Read many books...
+💪 Become stronger...
+">
+</textarea>
+
+</div>
+
+<!-- Future Commander -->
+
+<div class="section">
+
+<h2>📨 Message To Future Me</h2>
+
+<p style="color:#CBD5E1;">
+Leave a message for your future self
+</p>
+
+<textarea
+id="futureMessage"
+rows="8"
+placeholder="Dear future me..."
+>
+</textarea>
+
+</div>
+
+<!-- Achievements -->
+
+<div class="section">
+
+<h2>🏆 Achievements</h2>
+
+<div class="task">
+🥉 First Goal Completed
+</div>
+
+<div class="task">
+📖 First Book Finished
+</div>
+
+<div class="task">
+💻 First Programming Project
+</div>
+
+<div class="task">
+🌍 First Language Milestone
+</div>
+
+<div class="task">
+👑 Mission Commander
+</div>
+
+</div>
+
+<!-- Mission Streak -->
+
+<div class="section">
+
+<h2>🔥 Mission Streak</h2>
+
+<h1
+
+id="missionStreak"
+
+style="
+font-size:65px;
+text-align:center;
+color:#38BDF8;
+">
+
+0 Days
+
+</h1>
+
+<p
+
+style="
+text-align:center;
+font-weight:600;
+color:#CBD5E1;
+">
+
+Stay Consistent Every Day 🚀
+
+</p>
+
+</div>
+
+<script>
+
+/* ==========================
+   Mission Progress
+========================== */
+
+const missionProgress =
+document.getElementById(
+"missionProgress"
+);
+
+const missionPercent =
+document.getElementById(
+"missionPercent"
+);
+
+const circle =
+document.getElementById(
+"circle"
+);
+
+const progressValue =
+document.getElementById(
+"progressValue"
+);
+
+function updateMissionProgress(){
+
+const value =
+missionProgress.value;
+
+missionPercent.innerText =
+value + "%";
+
+progressValue.innerText =
+value + "%";
+
+circle.style.background =
+`conic-gradient(
+#38BDF8 ${value*3.6}deg,
+#1E293B ${value*3.6}deg
+)`;
+
+localStorage.setItem(
+"boysMissionProgress",
+value
+);
+
+}
+
+const savedProgress =
+localStorage.getItem(
+"boysMissionProgress"
+);
+
+if(savedProgress){
+
+missionProgress.value =
+savedProgress;
+
+}
+
+missionProgress.addEventListener(
+"input",
+updateMissionProgress
+);
+
+updateMissionProgress();
+
+/* ==========================
+   Mission Streak
+========================== */
+
+function updateMissionStreak(){
+
+const today =
+new Date()
+.toLocaleDateString();
+
+const lastVisit =
+localStorage.getItem(
+"boysMissionLastVisit"
+);
+
+if(lastVisit !== today){
+
+let streak =
+parseInt(
+localStorage.getItem(
+"boysMissionStreak"
+)
+) || 0;
+
+streak++;
+
+localStorage.setItem(
+"boysMissionStreak",
+streak
+);
+
+localStorage.setItem(
+"boysMissionLastVisit",
+today
+);
+
+}
+
+document.getElementById(
+"missionStreak"
+).innerText =
+(localStorage.getItem(
+"boysMissionStreak"
+) || 0)
++ " Days";
+
+}
+
+updateMissionStreak();
+
+/* ==========================
+   Save Checkboxes
+========================== */
+
+const tasks =
+document.querySelectorAll(
+".taskCheck"
+);
+
+tasks.forEach((task,index)=>{
+
+const saved =
+localStorage.getItem(
+"boysGoalTask"+index
+);
+
+if(saved==="true"){
+
+task.checked = true;
+
+}
+
+task.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boysGoalTask"+index,
+task.checked
+);
+
+}
+);
+
+});
+
+/* ==========================
+   Auto Save Inputs
+========================== */
+
+const fields =
+document.querySelectorAll(
+"input, textarea"
+);
+
+fields.forEach((field,index)=>{
+
+if(
+!field.classList.contains(
+"taskCheck"
+)
+&&
+field.id !== "missionProgress"
+){
+
+const key =
+"boysGoalInput"+index;
+
+const saved =
+localStorage.getItem(
+key
+);
+
+if(saved){
+
+field.value =
+saved;
+
+}
+
+field.addEventListener(
+"input",
+()=>{
+
+localStorage.setItem(
+key,
+field.value
+);
+
+}
+);
+
+}
+
+});
+
+/* ==========================
+   Save Main Mission
+========================== */
+
+const mainMission =
+document.getElementById(
+"mainMission"
+);
+
+if(mainMission){
+
+mainMission.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"boysMainMission",
+mainMission.value
+);
+
+}
+);
+
+}
+
+/* ==========================
+   Load Main Mission
+========================== */
+
+const savedMission =
+localStorage.getItem(
+"boysMainMission"
+);
+
+if(savedMission){
+
+mainMission.value =
+savedMission;
+
+}
+
+/* ==========================
+   Start
+========================== */
+
+updateMissionProgress();
+updateMissionStreak();
+
+</script>
+
+</div>
+
+</body>
+</html>
